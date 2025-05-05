@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useEffect, type React } from "react"
+import { useEffect } from "react";
 
 interface ScrollArrowProps {
-  targetRef: React.RefObject<HTMLElement>
+  targetRef: React.RefObject<HTMLElement>;
 }
 
 const ScrollArrow: React.FC<ScrollArrowProps> = ({ targetRef }) => {
   useEffect(() => {
-    const style = document.createElement("style")
+    const style = document.createElement("style");
     style.textContent = `
       @keyframes mouse-wheel {
         0% { transform: translateY(0); opacity: 1; }
@@ -19,19 +19,22 @@ const ScrollArrow: React.FC<ScrollArrowProps> = ({ targetRef }) => {
         50% { opacity: 0.5; }
         100% { opacity: 1; }
       }
-    `
-    document.head.appendChild(style)
+    `;
+    document.head.appendChild(style);
     return () => {
-      document.head.removeChild(style)
-    }
-  }, [])
+      document.head.removeChild(style);
+    };
+  }, []);
 
   const handleClick = () => {
-    targetRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+    targetRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer" onClick={handleClick}>
+    <div
+      className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+      onClick={handleClick}
+    >
       <div className="w-6 h-[100px]">
         <div className="w-6 h-[42px] rounded-full border-2 border-secondary-foreground mb-2">
           <div className="w-1 h-1 bg-secondary-foreground rounded-full mx-auto mt-[5px] animate-[mouse-wheel_0.6s_linear_infinite]"></div>
@@ -47,7 +50,7 @@ const ScrollArrow: React.FC<ScrollArrowProps> = ({ targetRef }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ScrollArrow
+export default ScrollArrow;
