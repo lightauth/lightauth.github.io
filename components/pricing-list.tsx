@@ -4,28 +4,26 @@ interface PricingItem {
   service: string;
   price: number;
 }
-
+const pricingItems: PricingItem[] = [
+  { service: "Dizajn", price: 15000 },
+  { service: "Development (Razvoj)", price: 36000 },
+  { service: "Projektni Menadžment", price: 7500 },
+  { service: "Postavljanje projekta", price: 500 },
+  { service: "Tehnički SEO", price: 2500 },
+  {
+    service: "Unos sadrzaja (svi jezici, sadrzaj dostavlja klijent)",
+    price: 5000,
+  },
+  { service: "Kontrola kvaliteta", price: 3000 },
+  { service: "Tehnička dokumentacija", price: 1500 },
+  { service: "Prenos svih Blog objava sa trenutnog sajta", price: 2000 },
+];
 const PricingList: React.FC = () => {
   const [total, setTotal] = useState(0);
   const [discountAmount, setDiscountAmount] = useState(0);
   const [discountedTotal, setDiscountedTotal] = useState(0);
 
   const DISCOUNT_PERCENTAGE = 7.5;
-
-  const pricingItems: PricingItem[] = [
-    { service: "Dizajn", price: 15000 },
-    { service: "Development (Razvoj)", price: 36000 },
-    { service: "Projektni Menadžment", price: 7500 },
-    { service: "Postavljanje projekta", price: 500 },
-    { service: "Tehnički SEO", price: 2500 },
-    {
-      service: "Unos sadrzaja (svi jezici, sadrzaj dostavlja klijent)",
-      price: 5000,
-    },
-    { service: "Kontrola kvaliteta", price: 3000 },
-    { service: "Tehnička dokumentacija", price: 1500 },
-    { service: "Prenos svih Blog objava sa trenutnog sajta", price: 2000 },
-  ];
 
   useEffect(() => {
     const newTotal = pricingItems.reduce((sum, item) => sum + item.price, 0);
@@ -34,7 +32,7 @@ const PricingList: React.FC = () => {
     setTotal(newTotal);
     setDiscountAmount(newDiscountAmount);
     setDiscountedTotal(newDiscountedTotal);
-  }, [pricingItems]);
+  }, []);
 
   return (
     <div className="overflow-x-auto">
