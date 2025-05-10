@@ -65,8 +65,48 @@ export default function CodeExample() {
                     Install the NextJS package:
                   </div>
                   <pre className="rounded-md bg-gray-800 p-4 text-sm text-white overflow-x-auto">
-                    <code>{`npm i @ligh-auth/nextjs`}</code>
+                    <code>{`npm i @ligh-auth/nextjs artic`}</code>
                   </pre>
+                  <div className="my-4 text-sm text-gray-500">
+                    Add the following code to your Next.js project to set up
+                    Light-Auth
+                  </div>
+                  <pre className="rounded-md bg-slate-100 p-1 mb-4 text-sm  overflow-x-auto">
+                    <code>{`/app/lib/auth.ts`}</code>
+                  </pre>
+                  <div className="rounded-md bg-blue-100 border-blue-600 border p-1 mb-4 text-sm overflow-x-auto gap-2">
+                    <Info className="h-4 w-4 text-blue-500 inline-block mr-2" />
+                    You can use any path. Remember this path will be used
+                    everywhere as it contains all the required exports. You can
+                    choose &nbsp;
+                    <span className="text-blue-500 font-mono border border-blue-200 rounded-md px-2">
+                      "/app/auth.ts"
+                    </span>
+                    <span> or&nbsp;</span>
+                    <span className="text-blue-500 font-mono border border-blue-200 rounded-md px-2">
+                      "/app/lib/light-auth.ts"
+                    </span>
+                    <span> or any valid path you want.</span>
+                  </div>
+                  <pre className="rounded-md bg-gray-800 p-4 text-sm text-white overflow-x-auto">
+                    <code>{`import { CreateLightAuth } from "@light-auth/nextjs";
+import { Google } from "artic";                                        
+
+export const { providers, handlers, signIn, signOut, getSession, getUser } =
+  CreateLightAuth({
+    providers: [
+      {
+        providerName: "google",
+        artic: new Google(
+          process.env.GOOGLE_CLIENT_ID || "",
+          process.env.GOOGLE_CLIENT_SECRET || "",
+          "http://localhost:3000/api/auth/callback/google"
+        ),
+      },
+    ],
+  });`}</code>
+                  </pre>
+
                   <div className="my-4 text-sm text-gray-500">
                     Add the handlers to your Next.js API routes:
                   </div>
@@ -94,44 +134,27 @@ export default function CodeExample() {
                     <code>{`import { handlers } from "@/lib/auth";
 export const { GET, POST } = handlers;`}</code>
                   </pre>
-                  <div className="my-4 text-sm text-gray-500">
-                    Add the following code to your Next.js project to set up
-                    Light-Auth
-                  </div>
-                  <pre className="rounded-md bg-slate-100 p-1 mb-4 text-sm  overflow-x-auto">
-                    <code>{`/lib/auth.ts`}</code>
-                  </pre>
-                  <pre className="rounded-md bg-gray-800 p-4 text-sm text-white overflow-x-auto">
-                    <code>{`import { CreateLightAuth } from "@light-auth/nextjs";                    
-
-export const { providers, handlers, signIn, signOut, getSession, getUser } =
-  CreateLightAuth({
-    providers: [
-      {
-        providerName: "google",
-        artic: new Google(
-          process.env.GOOGLE_CLIENT_ID || "",
-          process.env.GOOGLE_CLIENT_SECRET || "",
-          "http://localhost:3000/api/auth/callback/google"
-        ),
-      },
-    ],
-  });`}</code>
-                  </pre>
 
                   <div className="my-4 text-sm text-gray-500">
-                    Add a signin action to sign in users:
+                    Now that everything is correctly configured, you can add a
+                    signin action to sign in users:
                   </div>
                   <pre className="rounded-md bg-slate-100 p-1 mb-4 text-sm  overflow-x-auto">
                     <code>{`/app/page/login.tsx`}</code>
                   </pre>
                   <pre className="rounded-md bg-gray-800 p-4 text-sm text-white overflow-x-auto">
-                    <code>{`<form action={async () => {
-    "use server";
-    await signIn("google");
-  }}>
-  <Button type="submit">Google</Button>
-</form>`}</code>
+                    <code>{`import { signIn } from "@/lib/auth";
+
+export default function LoginPage() {
+  return (                    
+    <form action={async () => {
+      "use server";
+      await signIn("google");
+    }}>
+      <Button type="submit">Google</Button>
+    </form>
+  );
+}`}</code>
                   </pre>
 
                   <div className="my-4 text-sm text-gray-500">
@@ -142,7 +165,9 @@ export const { providers, handlers, signIn, signOut, getSession, getUser } =
                     <code>{`/app/page.tsx`}</code>
                   </pre>
                   <pre className="rounded-md bg-gray-800 p-4 text-sm text-white overflow-x-auto">
-                    <code>{`export default async function Home() {
+                    <code>{`import { getSession } from "@/lib/auth";
+
+export default async function Home() {
   const session = await getSession();
   return (
     <main>

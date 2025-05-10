@@ -8,57 +8,56 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Check } from "lucide-react";
+const plans = [
+  {
+    name: "Free",
+    price: "$0",
+    description: "Perfect for small projects and personal websites",
+    features: [
+      "Up to 1,000 monthly active users",
+      "Email/password authentication",
+      "JWT token management",
+      "Community support",
+    ],
+    buttonText: "Get Started",
+    buttonVariant: "outline" as const,
+    highlighted: true,
+  },
+  {
+    name: "Pro",
+    price: "$0",
+    period: "/ (yes, it's free)",
+    description: "For growing applications with advanced needs",
+    features: [
+      "Up to 10,000 monthly active users",
+      "Social login providers",
+      "Multi-factor authentication",
+      "Priority email support",
+      "Custom branding",
+    ],
+    buttonText: "Documentation",
+    buttonVariant: "outline" as const,
+    highlighted: true,
+  },
+  {
+    name: "Enterprise",
+    price: "$0",
+    period: "/ (yes, it's still free, but I have a paypal account)",
+    description: "For large-scale applications with specific requirements",
+    features: [
+      "Unlimited monthly active users",
+      "Dedicated support team",
+      "Custom integration assistance",
+      "SLA guarantees",
+      "On-premise deployment option",
+    ],
+    buttonText: "Documentation",
+    buttonVariant: "outline" as const,
+    highlighted: true,
+  },
+];
 
 export default function GetStarted() {
-  const plans = [
-    {
-      name: "Free",
-      price: "$0",
-      description: "Perfect for small projects and personal websites",
-      features: [
-        "Up to 1,000 monthly active users",
-        "Email/password authentication",
-        "JWT token management",
-        "Community support",
-      ],
-      buttonText: "Get Started",
-      buttonVariant: "outline" as const,
-      highlighted: true,
-    },
-    {
-      name: "Pro",
-      price: "$0",
-      period: "/ (yes, it's free)",
-      description: "For growing applications with advanced needs",
-      features: [
-        "Up to 10,000 monthly active users",
-        "Social login providers",
-        "Multi-factor authentication",
-        "Priority email support",
-        "Custom branding",
-      ],
-      buttonText: "Documentation",
-      buttonVariant: "outline" as const,
-      highlighted: true,
-    },
-    {
-      name: "Enterprise",
-      price: "$0",
-      period: "/ (yes, it's still free, but I have a paypal account)",
-      description: "For large-scale applications with specific requirements",
-      features: [
-        "Unlimited monthly active users",
-        "Dedicated support team",
-        "Custom integration assistance",
-        "SLA guarantees",
-        "On-premise deployment option",
-      ],
-      buttonText: "Documentation",
-      buttonVariant: "outline" as const,
-      highlighted: true,
-    },
-  ];
-
   return (
     <section id="get-started" className="bg-white py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
