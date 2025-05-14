@@ -139,15 +139,6 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname === "/docs/session" || pathname.startsWith("/docs/signout/")}>
                   <Link href="/docs/session">
-                    <LogOut className="h-4 w-4" />
-                    <span>Session</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/docs/session" || pathname.startsWith("/docs/signout/")}>
-                  <Link href="/docs/session">
                     <Shield className="h-4 w-4" />
                     <span>Session</span>
                   </Link>

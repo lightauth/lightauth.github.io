@@ -13,7 +13,7 @@ export async function CodeBlock(props: Props) {
   const out = await codeToHtml(props.children, {
     lang: props.lang,
     themes: {
-      light: "github-dark",
+      light: "github-light",
       dark: "github-dark",
     },
   });
@@ -27,7 +27,7 @@ export async function CodeBlock(props: Props) {
         </div>
       )}
       <div
-        className={cn("text-sm [&>*]:p-4 ", props.title ? "[&>*]:rounded-b-md" : "[&>*]:rounded-md", props.className)}
+        className={cn("text-sm [&>*]:p-4 [&>*]:border ", props.title ? "[&>*]:rounded-b-md" : "[&>*]:rounded-md", props.className)}
         dangerouslySetInnerHTML={{ __html: out }}
       />
     </div>
