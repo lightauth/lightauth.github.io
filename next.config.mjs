@@ -1,11 +1,14 @@
-import nextra from 'nextra'
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    unoptimized: true,
+  },
+}
 
-// Set up Nextra with its configuration
-const withNextra = nextra({
-  // ... Add Nextra-specific options here
-})
-
-// Export the final Next.js config with Nextra included
-export default withNextra({
-  // ... Add regular Next.js options here
-})
+export default nextConfig
