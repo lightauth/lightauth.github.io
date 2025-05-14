@@ -1,8 +1,25 @@
-"use client"
+"use client";
 
-import { usePathname } from "next/navigation"
-import Link from "next/link"
-import { Search, BookOpen, FileText, Code, Lightbulb, BookMarked, Home } from "lucide-react"
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import {
+  Search,
+  BookOpen,
+  FileText,
+  Code,
+  Lightbulb,
+  BookMarked,
+  Home,
+  LogIn,
+  LogOut,
+  Cross,
+  Settings,
+  KeyRound,
+  Brain,
+  ListRestart,
+  Shield,
+  User,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -19,14 +36,14 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 interface DocsSidebarProps {
-  className?: string
+  className?: string;
 }
 
 export function DocsSidebar({ className }: DocsSidebarProps) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <Sidebar className={className}>
@@ -75,48 +92,95 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
               </SidebarMenuItem>
 
               <SidebarMenuItem>
-                <SidebarMenuButton
-                  asChild
-                  isActive={pathname === "/docs/installation" || pathname.startsWith("/docs/installation/")}
-                >
+                <SidebarMenuButton asChild isActive={pathname === "/docs/installation" || pathname.startsWith("/docs/installation/")}>
                   <Link href="/docs/installation">
                     <Code className="h-4 w-4" />
                     <span>Installation</span>
                   </Link>
                 </SidebarMenuButton>
-                {pathname === "/docs/installation" || pathname.startsWith("/docs/installation/") ? (
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton asChild isActive={pathname === "/docs/installation/npm"}>
-                        <Link href="/docs/installation/npm">npm</Link>
-                      </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton asChild isActive={pathname === "/docs/installation/yarn"}>
-                        <Link href="/docs/installation/yarn">yarn</Link>
-                      </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton asChild isActive={pathname === "/docs/installation/cdn"}>
-                        <Link href="/docs/installation/cdn">CDN</Link>
-                      </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                ) : null}
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/docs/auth" || pathname.startsWith("/docs/auth/")}>
+                  <Link href="/docs/auth">
+                    <KeyRound className="h-4 w-4" />
+                    <span>Create Light Auth</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/docs/handlers" || pathname.startsWith("/docs/handlers/")}>
+                  <Link href="/docs/handlers">
+                    <Brain className="h-4 w-4" />
+                    <span>API Handlers</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/docs/signin" || pathname.startsWith("/docs/signin/")}>
+                  <Link href="/docs/signin">
+                    <LogIn className="h-4 w-4" />
+                    <span>Sign In</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/docs/signout" || pathname.startsWith("/docs/signout/")}>
+                  <Link href="/docs/signout">
+                    <LogOut className="h-4 w-4" />
+                    <span>Sign Out</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/docs/session" || pathname.startsWith("/docs/signout/")}>
+                  <Link href="/docs/session">
+                    <LogOut className="h-4 w-4" />
+                    <span>Session</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/docs/session" || pathname.startsWith("/docs/signout/")}>
+                  <Link href="/docs/session">
+                    <Shield className="h-4 w-4" />
+                    <span>Session</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/docs/user" || pathname.startsWith("/docs/refresh/")}>
+                  <Link href="/docs/user">
+                    <User className="h-4 w-4" />
+                    <span>User</span>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Guides</SidebarGroupLabel>
+          <SidebarGroupLabel>Client Side</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton
-                  asChild
-                  isActive={pathname === "/docs/tutorial" || pathname.startsWith("/docs/tutorial/")}
-                >
+                <SidebarMenuButton asChild isActive={pathname === "/docs/refresh" || pathname.startsWith("/docs/refresh/")}>
+                  <Link href="/docs/refresh">
+                    <KeyRound className="h-4 w-4" />
+                    <span>Create Light Auth Client</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/docs/tutorial" || pathname.startsWith("/docs/tutorial/")}>
                   <Link href="/docs/tutorial">
                     <BookOpen className="h-4 w-4" />
                     <span>Tutorial</span>
@@ -151,10 +215,7 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton
-                  asChild
-                  isActive={pathname === "/docs/concepts" || pathname.startsWith("/docs/concepts/")}
-                >
+                <SidebarMenuButton asChild isActive={pathname === "/docs/concepts" || pathname.startsWith("/docs/concepts/")}>
                   <Link href="/docs/concepts">
                     <Lightbulb className="h-4 w-4" />
                     <span>Concepts</span>
@@ -203,9 +264,7 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
               </div>
               <div className="text-sm font-medium">Need help?</div>
             </div>
-            <div className="mt-2 text-xs">
-              Our support team is available 24/7 to assist you with any questions or issues.
-            </div>
+            <div className="mt-2 text-xs">Our support team is available 24/7 to assist you with any questions or issues.</div>
             <div className="mt-3">
               <Link
                 href="/support"
@@ -218,5 +277,5 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
         </div>
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
