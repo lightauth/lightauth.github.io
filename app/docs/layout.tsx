@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar"
-import { DocsSidebar } from "@/components/docs-sidebar"
+import type React from "react";
+import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
+import { DocsSidebar } from "@/components/docs-sidebar";
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -25,8 +25,8 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
             </a>
           </div>
         </header>
-        <main className="container max-w-4xl py-6 md:py-12">{children}</main>
+        <main className="container py-6 md:py-12">{children}</main>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

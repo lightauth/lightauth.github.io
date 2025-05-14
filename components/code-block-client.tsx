@@ -20,7 +20,9 @@ export function CodeBlockClient(props: Props) {
           <span className="text-gray-500 font-[Consolas]">{props.codeDescription}</span>
         </div>
       )}
-      <div className={cn("text-sm [&>*]:p-4 ", props.codeDescription ? "[&>*]:rounded-b-md" : "[&>*]:rounded-md", props.className)}>{props.initial}</div>
+      <div className={cn("text-sm [&>*]:p-4 [&>*]:border", props.codeDescription ? "[&>*]:rounded-b-md" : "[&>*]:rounded-md", props.className)}>
+        {props.initial}
+      </div>
     </div>
   );
 }
