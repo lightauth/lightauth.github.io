@@ -1,9 +1,8 @@
-"use client";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Info } from "lucide-react";
+import { CodeBlock } from "./code-block";
 
 export default function CodeExample() {
   return (
@@ -88,8 +87,8 @@ export default function CodeExample() {
                     </span>
                     <span> or any valid path you want.</span>
                   </div>
-                  <pre className="rounded-md bg-gray-800 p-4 text-sm text-white overflow-x-auto">
-                    <code>{`import { CreateLightAuth } from "@light-auth/nextjs";
+                  <CodeBlock lang="ts">
+                    {`import { CreateLightAuth } from "@light-auth/nextjs";
 import { Google } from "artic";                                        
 
 export const { providers, handlers, signIn, signOut, getSession, getUser } =
@@ -104,7 +103,10 @@ export const { providers, handlers, signIn, signOut, getSession, getUser } =
         ),
       },
     ],
-  });`}</code>
+  });`}
+                  </CodeBlock>
+                  <pre className="rounded-md bg-gray-800 p-4 text-sm text-white overflow-x-auto">
+                    <code></code>
                   </pre>
 
                   <div className="my-4 text-sm text-gray-500">
