@@ -90,6 +90,11 @@ main {
   flex: 1;
 }
 
+/* Custom styles for code, when it's not a child of a <pre> balise */
+code:not(pre code) {
+  @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+}
+
 /* Custom styles for scroll arrow */
 @keyframes mouse-wheel {
   0% {

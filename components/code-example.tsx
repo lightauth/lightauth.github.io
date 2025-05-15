@@ -11,8 +11,8 @@ export default function CodeExample({ languagesCodeBlocks }: { languagesCodeBloc
   const [currentValue, setCurrentValue] = useState(languagesCodeBlocks[0]?.name ?? "");
 
   return (
-    <section id="documentation" className="bg-gray-50 py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="documentation" className="bg-gray-50 py-20 ">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">Simple Implementation</h2>
           <p className="mt-4 text-lg text-gray-600">

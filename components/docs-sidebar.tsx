@@ -137,19 +137,39 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
               </SidebarMenuItem>
 
               <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/docs/metadata" || pathname.startsWith("/docs/metadata/")}>
+                  <Link href="/docs/metadata">
+                    <Lightbulb className="h-4 w-4" />
+                    <span>metadata</span>
+                  </Link>
+                </SidebarMenuButton>
+                {pathname === "/docs/metadata" || pathname.startsWith("/docs/metadata/") ? (
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuSubButton asChild isActive={pathname === "/docs/metadata/session"}>
+                        <Link href="/docs/metadata/session">
+                          <Shield className="h-4 w-4" />
+                          Session
+                        </Link>
+                      </SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuSubButton asChild isActive={pathname === "/docs/metadata/user"}>
+                        <Link href="/docs/metadata/user">
+                          <User className="h-4 w-4" />
+                          User
+                        </Link>
+                      </SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                ) : null}
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname === "/docs/session" || pathname.startsWith("/docs/signout/")}>
                   <Link href="/docs/session">
                     <Shield className="h-4 w-4" />
                     <span>Session</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/docs/user" || pathname.startsWith("/docs/refresh/")}>
-                  <Link href="/docs/user">
-                    <User className="h-4 w-4" />
-                    <span>User</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
