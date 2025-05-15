@@ -4,14 +4,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CodeTabs } from "./code-tabs";
 import { useState } from "react";
 import { CodeBlockClient } from "./code-block-client";
-import { LanguageCodeBlock } from "@/app/models/code-block-type";
+import { LanguageCodeBlock } from "@/models/code-block-type";
 import { Step, Steps } from "./steps";
 
 export default function CodeExample({ languagesCodeBlocks }: { languagesCodeBlocks: LanguageCodeBlock[] }) {
   const [currentValue, setCurrentValue] = useState(languagesCodeBlocks[0]?.name ?? "");
 
   return (
-    <section id="documentation" className="bg-gray-50 py-20 ">
+    <section id="documentation" className="bg-background/95 py-20 ">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">Simple Implementation</h2>

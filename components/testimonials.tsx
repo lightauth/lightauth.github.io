@@ -24,7 +24,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-background/90 py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">Trusted by Developers</h2>
@@ -32,7 +32,7 @@ export default function Testimonials() {
         </div>
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="border-0 shadow-lg">
+            <Card key={index}>
               <CardContent className="p-6">
                 <div className="mb-4">
                   <svg width="45" height="36" className="text-blue-500 fill-current">

@@ -1,6 +1,6 @@
 import { CodeBlock } from "@/components/code-block";
 import MermaidDiagram from "@/components/mermaid-component";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import WorkflowExplanation from "@/components/workflow-explanation";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -22,6 +22,7 @@ export default function MetadataPage() {
         <h2>
           <BookOpen className="text-blue-600 mr-2" /> Overview
         </h2>
+
         <p className="mb-4">
           <strong>Light-Auth</strong> implements a secure, modern authentication flow based on <strong>JWT tokens</strong>.
         </p>
@@ -43,25 +44,29 @@ export default function MetadataPage() {
             <p>Instead of storing everything in one place, Light-Auth strategically splits this data into two objects:</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
-              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                <h3>Session Object</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-sm mb-2">
-                  Contains only essential authentication data (userId, sessionId, email, expirationDate) needed for quick identity verification.
-                </p>
-                <div className="bg-white dark:bg-slate-800 p-3 rounded-md text-xs">
-                  <code>Stored in cookies via SessionStore</code>
-                </div>
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Session Object</CardTitle>
+                  <CardDescription>
+                    Contains only essential authentication data (userId, sessionId, email, expirationDate) needed for quick identity verification.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded-md font-medium">Stored in cookies via SessionStore</div>
+                </CardContent>
+              </Card>
 
-              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                <h3 className="font-medium text-slate-900 dark:text-white mb-2">User Object</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-sm mb-2">
-                  Contains complete user metadata (access token, refresh token, provider details, etc.) needed for API access and detailed user information.
-                </p>
-                <div className="bg-white dark:bg-slate-800 p-3 rounded-md text-xs">
-                  <code>Stored in backend via UserAdapter</code>
-                </div>
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle>User Object</CardTitle>
+                  <CardDescription>
+                    Contains complete user metadata (access token, refresh token, provider details, etc.) needed for API access and detailed user information.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded-md font-medium">Stored in backend via UserAdapter</div>
+                </CardContent>
+              </Card>
             </div>
 
             <h3 className="font-medium text-slate-900 dark:text-white mb-2">Why This Approach?</h3>

@@ -1,4 +1,4 @@
-import { LanguageCodeBlock } from "../models/code-block-type";
+import { LanguageCodeBlock } from "../../models/code-block-type";
 import Image from "next/image";
 import { highlight } from "@/lib/highlight";
 import Link from "next/link";

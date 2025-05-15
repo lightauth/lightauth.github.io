@@ -1,16 +1,14 @@
-import { Github, Twitter, Linkedin } from "lucide-react"
-import Link from "next/link"
+import { Github, Twitter, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-background/80">
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Light-Auth</h3>
-            <p className="text-gray-400">
-              A lightweight, secure, and easy-to-implement authentication framework for modern web applications.
-            </p>
+            <p className="text-gray-400">A lightweight, secure, and easy-to-implement authentication framework for modern web applications.</p>
             <div className="flex space-x-4">
               <Link href="#" className="text-gray-400 hover:text-white">
                 <Github className="h-5 w-5" />
@@ -100,11 +98,9 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 border-t border-gray-800 pt-8">
-          <p className="text-center text-gray-400">
-            &copy; {new Date().getFullYear()} Light-Auth. All rights reserved.
-          </p>
+          <p className="text-center text-gray-400">&copy; {new Date().getFullYear()} Light-Auth. All rights reserved.</p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

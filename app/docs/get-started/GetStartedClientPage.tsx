@@ -4,7 +4,7 @@ import { Step, Steps } from "@/components/steps";
 
 import { useState } from "react";
 import { CodeTabs } from "@/components/code-tabs";
-import { LanguageCodeBlock } from "@/app/models/code-block-type";
+import { LanguageCodeBlock } from "@/models/code-block-type";
 import { CodeBlockClient } from "@/components/code-block-client";
 
 export default function GetStartedClientPage({ languagesCodeBlocks }: { languagesCodeBlocks: LanguageCodeBlock[] }) {

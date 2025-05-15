@@ -1,5 +1,6 @@
 import { CodeBlock } from "@/components/code-block";
 import { Callout } from "@/components/ui/callout";
+import { Card, CardContent } from "@/components/ui/card";
 import { BookOpen, ExternalLink, FileText, Info } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -32,102 +33,104 @@ export default function SessionPage() {
 
         <p>The authentication process in Light-Auth is designed to be simple and secure. It involves the following steps:</p>
 
-        <div className="mt-6 bg-gray-50 p-6 rounded-lg border">
-          <div className="flex flex-col items-center">
-            <div className="w-full my-8">
-              <div className="relative">
-                {/* Authentication Flow Diagram */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8">
-                  {/* Web App */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-32 h-20 bg-blue-100 rounded-lg flex items-center justify-center border border-blue-200">
-                      <span className="font-medium text-blue-800">Your Web App</span>
+        <Card>
+          <CardContent>
+            <div className="flex flex-col items-center">
+              <div className="w-full my-8">
+                <div className="relative">
+                  {/* Authentication Flow Diagram */}
+                  <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8">
+                    {/* Web App */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-32 h-20 bg-blue-100 rounded-lg flex items-center justify-center border border-blue-200">
+                        <span className="font-medium text-blue-800">Your Web App</span>
+                      </div>
+                      <span className="text-sm text-gray-500 mt-2">NextJS, Astro, Nuxt ...</span>
                     </div>
-                    <span className="text-sm text-gray-500 mt-2">NextJS, Astro, Nuxt ...</span>
-                  </div>
 
-                  {/* Arrows */}
-                  <div className="flex flex-col items-center">
-                    <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
-                    <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
-                    <div className="text-xs text-gray-500 my-1">1. Authentication Request</div>
-                    <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
-                    <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
-                  </div>
-
-                  {/* Light-Auth */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-32 h-20 bg-blue-600 rounded-lg flex items-center justify-center">
-                      <span className="font-medium text-white">Light-Auth</span>
+                    {/* Arrows */}
+                    <div className="flex flex-col items-center">
+                      <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
+                      <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
+                      <div className="text-xs text-gray-500 my-1">1. Authentication Request</div>
+                      <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
+                      <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
                     </div>
-                    <span className="text-sm text-gray-500 mt-2">Authentication Service</span>
-                  </div>
 
-                  {/* Arrows */}
-                  <div className="flex flex-col items-center">
-                    <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
-                    <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
-                    <div className="text-xs text-gray-500 my-1">2. OpenID Connect</div>
-                    <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
-                    <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
-                  </div>
-
-                  {/* Provider */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-32 h-20 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200">
-                      <span className="font-medium text-gray-800">Provider</span>
+                    {/* Light-Auth */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-32 h-20 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <span className="font-medium text-white">Light-Auth</span>
+                      </div>
+                      <span className="text-sm text-gray-500 mt-2">Authentication Service</span>
                     </div>
-                    <span className="text-sm text-gray-500 mt-2">Google, Github, Microsoft...</span>
-                  </div>
-                </div>
 
-                {/* Return Flow */}
-                <div className="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8">
-                  {/* Client */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-32 h-20 bg-blue-100 rounded-lg flex items-center justify-center border border-blue-200">
-                      <span className="font-medium text-blue-800">You Web App</span>
+                    {/* Arrows */}
+                    <div className="flex flex-col items-center">
+                      <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
+                      <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
+                      <div className="text-xs text-gray-500 my-1">2. OpenID Connect</div>
+                      <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
+                      <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
+                    </div>
+
+                    {/* Provider */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-32 h-20 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200">
+                        <span className="font-medium text-gray-800">Provider</span>
+                      </div>
+                      <span className="text-sm text-gray-500 mt-2">Google, Github, Microsoft...</span>
                     </div>
                   </div>
 
-                  {/* Arrows */}
-                  <div className="flex flex-col items-center">
-                    <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
-                    <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
-                    <div className="text-xs text-gray-500 my-1">4. JWT Token / Cookies</div>
-                    <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
-                    <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
-                  </div>
-
-                  {/* Light-Auth */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-32 h-20 bg-blue-600 rounded-lg flex items-center justify-center">
-                      <span className="font-medium text-white">Light-Auth</span>
+                  {/* Return Flow */}
+                  <div className="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8">
+                    {/* Client */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-32 h-20 bg-blue-100 rounded-lg flex items-center justify-center border border-blue-200">
+                        <span className="font-medium text-blue-800">You Web App</span>
+                      </div>
                     </div>
-                    <span className="text-sm text-gray-500 mt-2">Authentication Service</span>
-                  </div>
 
-                  {/* Arrows */}
-                  <div className="flex flex-col items-center">
-                    <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
-                    <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
-                    <div className="text-xs text-gray-500 my-1">3. Response</div>
-                    <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
-                    <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
-                  </div>
-
-                  {/* Database */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-32 h-20 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200">
-                      <span className="font-medium text-gray-800">Provider</span>
+                    {/* Arrows */}
+                    <div className="flex flex-col items-center">
+                      <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
+                      <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
+                      <div className="text-xs text-gray-500 my-1">4. JWT Token / Cookies</div>
+                      <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
+                      <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
                     </div>
-                    <span className="text-sm text-gray-500 mt-2">Google, Github, Microsoft...</span>
+
+                    {/* Light-Auth */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-32 h-20 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <span className="font-medium text-white">Light-Auth</span>
+                      </div>
+                      <span className="text-sm text-gray-500 mt-2">Authentication Service</span>
+                    </div>
+
+                    {/* Arrows */}
+                    <div className="flex flex-col items-center">
+                      <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
+                      <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
+                      <div className="text-xs text-gray-500 my-1">3. Response</div>
+                      <div className="hidden md:block w-24 h-0.5 bg-gray-300"></div>
+                      <div className="md:hidden h-8 w-0.5 bg-gray-300"></div>
+                    </div>
+
+                    {/* Database */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-32 h-20 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200">
+                        <span className="font-medium text-gray-800">Provider</span>
+                      </div>
+                      <span className="text-sm text-gray-500 mt-2">Google, Github, Microsoft...</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
 
         <h2>
           <BookOpen className="text-blue-600 mr-2" />

@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 
 export default function Hero() {
   return (
-    <div className="relative overflow-hidden bg-white">
+    <div className="bg-background">
       <div className="relative z-10 mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
           <div className="mb-8 flex justify-center">
@@ -100,7 +100,7 @@ export default function Hero() {
             </CardContent>
           </Card>
           <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-            <Button variant="outline" size="lg" className="h-12 px-8">
+            <Button variant="default" size="lg" className="h-12 px-8">
               <Link href="/docs">Documentation</Link>
             </Button>
           </div>

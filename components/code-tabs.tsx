@@ -2,7 +2,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { CodeBlockClient } from "./code-block-client";
 import { JSX, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { CodeBlockTabs } from "@/app/models/code-block-type";
+import { CodeBlockTabs } from "@/models/code-block-type";
 
 export function CodeTabs({
   codeBlockTabs,
