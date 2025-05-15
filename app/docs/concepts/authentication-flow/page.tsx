@@ -1,33 +1,28 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Authentication Flow - Light-Auth Documentation",
   description: "Understanding the authentication flow in Light-Auth.",
-}
+};
 
 export default function AuthenticationFlowPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">Authentication Flow</h1>
-      <p className="text-lg text-muted-foreground">
-        Understanding how authentication works in Light-Auth from end to end.
-      </p>
+      <h1>Authentication Flow</h1>
+      <p className="text-lg text-muted-foreground">Understanding how authentication works in Light-Auth from end to end.</p>
 
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Overview</h2>
         <p>
-          Light-Auth implements a secure, modern authentication flow based on JWT tokens. This page explains the
-          complete authentication process from credentials submission to secure sessions.
+          Light-Auth implements a secure, modern authentication flow based on JWT tokens. This page explains the complete authentication process from
+          credentials submission to secure sessions.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8">Authentication Process</h2>
         <div className="mt-6 space-y-6">
           <div className="border rounded-lg p-6">
             <h3 className="text-xl font-semibold">1. User Registration</h3>
-            <p className="mt-2">
-              The process begins when a user registers for an account. Light-Auth securely handles the registration
-              process:
-            </p>
+            <p className="mt-2">The process begins when a user registers for an account. Light-Auth securely handles the registration process:</p>
             <ol className="list-decimal pl-6 space-y-2 mt-4">
               <li>User submits registration information (email, password, etc.)</li>
               <li>Light-Auth validates the input and checks for existing accounts</li>
@@ -40,9 +35,7 @@ export default function AuthenticationFlowPage() {
 
           <div className="border rounded-lg p-6">
             <h3 className="text-xl font-semibold">2. User Login</h3>
-            <p className="mt-2">
-              When a registered user logs in, Light-Auth verifies their credentials and establishes a session:
-            </p>
+            <p className="mt-2">When a registered user logs in, Light-Auth verifies their credentials and establishes a session:</p>
             <ol className="list-decimal pl-6 space-y-2 mt-4">
               <li>User submits login credentials (email and password)</li>
               <li>Light-Auth retrieves the user record from the database</li>
@@ -67,9 +60,7 @@ export default function AuthenticationFlowPage() {
 
           <div className="border rounded-lg p-6">
             <h3 className="text-xl font-semibold">4. Token Refresh</h3>
-            <p className="mt-2">
-              JWT tokens have an expiration time for security. Light-Auth implements token refresh to maintain sessions:
-            </p>
+            <p className="mt-2">JWT tokens have an expiration time for security. Light-Auth implements token refresh to maintain sessions:</p>
             <ol className="list-decimal pl-6 space-y-2 mt-4">
               <li>When a token is about to expire, the client requests a new token</li>
               <li>The client sends the current token to the refresh endpoint</li>
@@ -203,8 +194,7 @@ export default function AuthenticationFlowPage() {
             <strong>HTTPS Only</strong> - All authentication traffic is encrypted using HTTPS.
           </li>
           <li>
-            <strong>CSRF Protection</strong> - Cross-Site Request Forgery protection is implemented for all
-            authentication endpoints.
+            <strong>CSRF Protection</strong> - Cross-Site Request Forgery protection is implemented for all authentication endpoints.
           </li>
           <li>
             <strong>XSS Prevention</strong> - Tokens are stored securely to prevent Cross-Site Scripting attacks.
@@ -220,5 +210,5 @@ export default function AuthenticationFlowPage() {
         </p>
       </div>
     </div>
-  )
+  );
 }

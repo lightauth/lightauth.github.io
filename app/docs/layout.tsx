@@ -3,6 +3,7 @@
 import type React from "react";
 import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
 import { DocsSidebar } from "@/components/docs-sidebar";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,6 +13,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         <header className="flex h-16 items-center border-b px-6">
           <SidebarTrigger className="mr-4 md:hidden" />
           <div className="ml-auto flex items-center gap-4">
+            <ThemeToggle />
             <a
               href="https://github.com/light-auth/light-auth"
               target="_blank"

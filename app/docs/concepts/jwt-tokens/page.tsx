@@ -1,24 +1,21 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "JWT Tokens - Light-Auth Documentation",
   description: "Understanding JWT tokens and how they work in Light-Auth.",
-}
+};
 
 export default function JwtTokensPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">JWT Tokens</h1>
-      <p className="text-lg text-muted-foreground">
-        Understanding JSON Web Tokens (JWT) and how they're used in Light-Auth.
-      </p>
+      <h1>JWT Tokens</h1>
+      <p className="text-lg text-muted-foreground">Understanding JSON Web Tokens (JWT) and how they're used in Light-Auth.</p>
 
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">What are JWT Tokens?</h2>
         <p>
-          JSON Web Tokens (JWT) are an open standard (RFC 7519) that defines a compact and self-contained way for
-          securely transmitting information between parties as a JSON object. This information can be verified and
-          trusted because it is digitally signed.
+          JSON Web Tokens (JWT) are an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between
+          parties as a JSON object. This information can be verified and trusted because it is digitally signed.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8">JWT Structure</h2>
@@ -31,8 +28,8 @@ export default function JwtTokensPage() {
             <strong>Payload</strong> - Contains the claims or the JWT's data.
           </li>
           <li>
-            <strong>Signature</strong> - Used to verify that the sender of the JWT is who it says it is and to ensure
-            that the message wasn't changed along the way.
+            <strong>Signature</strong> - Used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn't changed along the
+            way.
           </li>
         </ul>
 
@@ -81,16 +78,15 @@ export default function JwtTokensPage() {
         <p>Light-Auth uses JWT tokens for authentication and authorization in the following ways:</p>
         <ul className="list-disc pl-6 space-y-2 mt-4">
           <li>
-            <strong>Authentication</strong> - When a user logs in, Light-Auth generates a JWT token containing the
-            user's identity and permissions.
+            <strong>Authentication</strong> - When a user logs in, Light-Auth generates a JWT token containing the user's identity and permissions.
           </li>
           <li>
-            <strong>Authorization</strong> - The JWT token is included in subsequent API requests, allowing the server
-            to verify the user's identity and permissions without querying the database.
+            <strong>Authorization</strong> - The JWT token is included in subsequent API requests, allowing the server to verify the user's identity and
+            permissions without querying the database.
           </li>
           <li>
-            <strong>Stateless Sessions</strong> - Since JWTs contain all necessary information, Light-Auth can implement
-            stateless authentication, reducing database load.
+            <strong>Stateless Sessions</strong> - Since JWTs contain all necessary information, Light-Auth can implement stateless authentication, reducing
+            database load.
           </li>
           <li>
             <strong>Security</strong> - Light-Auth signs JWTs with a secret key to ensure they cannot be tampered with.
@@ -104,20 +100,17 @@ export default function JwtTokensPage() {
             <strong>Keep tokens secure</strong> - Store tokens securely and transmit them over HTTPS.
           </li>
           <li>
-            <strong>Set appropriate expiration times</strong> - Use short-lived tokens to minimize the impact of token
-            theft.
+            <strong>Set appropriate expiration times</strong> - Use short-lived tokens to minimize the impact of token theft.
           </li>
           <li>
-            <strong>Implement token refresh</strong> - Use refresh tokens to obtain new access tokens without requiring
-            the user to log in again.
+            <strong>Implement token refresh</strong> - Use refresh tokens to obtain new access tokens without requiring the user to log in again.
           </li>
           <li>
-            <strong>Validate tokens</strong> - Always validate tokens on the server side before granting access to
-            protected resources.
+            <strong>Validate tokens</strong> - Always validate tokens on the server side before granting access to protected resources.
           </li>
           <li>
-            <strong>Don't store sensitive data</strong> - Avoid storing sensitive information in JWT payloads, as they
-            can be decoded (though not modified without detection).
+            <strong>Don't store sensitive data</strong> - Avoid storing sensitive information in JWT payloads, as they can be decoded (though not modified
+            without detection).
           </li>
         </ul>
 
@@ -143,5 +136,5 @@ const newToken = await auth.refreshToken(expiredToken);`}</code>
         </p>
       </div>
     </div>
-  )
+  );
 }

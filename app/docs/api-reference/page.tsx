@@ -1,17 +1,15 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "API Reference - Light-Auth Documentation",
   description: "Complete API reference for Light-Auth's authentication framework.",
-}
+};
 
 export default function ApiReferencePage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">API Reference</h1>
-      <p className="text-lg text-muted-foreground">
-        Complete documentation of all Light-Auth methods, options, and configurations.
-      </p>
+      <h1>API Reference</h1>
+      <p className="text-lg text-muted-foreground">Complete documentation of all Light-Auth methods, options, and configurations.</p>
 
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Core API</h2>
@@ -132,10 +130,7 @@ export default function ApiReferencePage() {
         </div>
 
         <h2 className="text-2xl font-semibold mt-8">Additional APIs</h2>
-        <p>
-          Light-Auth provides additional APIs for specific frameworks and environments. See the framework-specific
-          documentation for more details.
-        </p>
+        <p>Light-Auth provides additional APIs for specific frameworks and environments. See the framework-specific documentation for more details.</p>
 
         <ul className="list-disc pl-6 space-y-2 mt-4">
           <li>
@@ -156,5 +151,5 @@ export default function ApiReferencePage() {
         </ul>
       </div>
     </div>
-  )
+  );
 }

@@ -12,7 +12,7 @@ export default function GetStartedClientPage({ languagesCodeBlocks }: { language
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">Get Started with Light-Auth</h1>
+      <h1>Get Started with Light-Auth</h1>
       <p className="text-lg text-muted-foreground">Learn how to quickly integrate Light-Auth into your application.</p>
 
       <div className="mt-8">

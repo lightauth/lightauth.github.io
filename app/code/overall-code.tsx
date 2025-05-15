@@ -53,7 +53,7 @@ import { CreateLightAuth } from "@light-auth/nextjs";
 
 const googleProvider = {
   providerName: "google",
-  artic: new Google(
+  arctic: new Google(
     process.env.GOOGLE_CLIENT_ID,
     process.env.GOOGLE_CLIENT_SECRET,
     "http://localhost:3000/api/auth/callback/google"
@@ -235,7 +235,7 @@ import { CreateLightAuth } from "@light-auth/nextjs";
 
 const googleProvider = {
   providerName: "google",
-  artic: new Google(
+  arctic: new Google(
     process.env.GOOGLE_CLIENT_ID,
     process.env.GOOGLE_CLIENT_SECRET,
     "http://localhost:3000/api/auth/callback/google"
@@ -295,7 +295,7 @@ import { CreateLightAuth } from "@light-auth/nextjs";
 
 const googleProvider = {
   providerName: "google",
-  artic: new Google(
+  arctic: new Google(
     process.env.GOOGLE_CLIENT_ID,
     process.env.GOOGLE_CLIENT_SECRET,
     "http://localhost:3000/api/auth/callback/google"

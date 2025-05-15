@@ -1,23 +1,21 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Tutorial - Light-Auth Documentation",
   description: "Learn how to implement authentication with Light-Auth through our step-by-step tutorial.",
-}
+};
 
 export default function TutorialPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">Light-Auth Tutorial</h1>
-      <p className="text-lg text-muted-foreground">
-        Follow this step-by-step tutorial to implement authentication in your application using Light-Auth.
-      </p>
+      <h1>Light-Auth Tutorial</h1>
+      <p className="text-lg text-muted-foreground">Follow this step-by-step tutorial to implement authentication in your application using Light-Auth.</p>
 
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Overview</h2>
         <p>
-          This tutorial will guide you through the process of setting up Light-Auth in your application and implementing
-          common authentication flows such as registration, login, and authorization.
+          This tutorial will guide you through the process of setting up Light-Auth in your application and implementing common authentication flows such as
+          registration, login, and authorization.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8">Tutorial Steps</h2>
@@ -30,9 +28,7 @@ export default function TutorialPage() {
             </h3>
             <p className="mt-2">Set up Light-Auth in your application and configure it with your API key and domain.</p>
             <div className="mt-4">
-              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
-                15 minutes
-              </span>
+              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">15 minutes</span>
             </div>
           </div>
 
@@ -44,9 +40,7 @@ export default function TutorialPage() {
             </h3>
             <p className="mt-2">Implement user registration, login, and logout functionality using Light-Auth.</p>
             <div className="mt-4">
-              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
-                30 minutes
-              </span>
+              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">30 minutes</span>
             </div>
           </div>
 
@@ -56,13 +50,9 @@ export default function TutorialPage() {
                 3. Authorization
               </a>
             </h3>
-            <p className="mt-2">
-              Learn how to protect routes and implement role-based access control in your application.
-            </p>
+            <p className="mt-2">Learn how to protect routes and implement role-based access control in your application.</p>
             <div className="mt-4">
-              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
-                25 minutes
-              </span>
+              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">25 minutes</span>
             </div>
           </div>
         </div>
@@ -102,5 +92,5 @@ export default function TutorialPage() {
         </ul>
       </div>
     </div>
-  )
+  );
 }

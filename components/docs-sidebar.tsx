@@ -45,6 +45,8 @@ interface DocsSidebarProps {
 export function DocsSidebar({ className }: DocsSidebarProps) {
   const pathname = usePathname();
 
+  console.log("pathname", pathname);
+
   return (
     <Sidebar className={className}>
       <SidebarHeader>
@@ -86,23 +88,14 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                 <SidebarMenuButton asChild isActive={pathname === "/docs/get-started"}>
                   <Link href="/docs/get-started">
                     <FileText className="h-4 w-4" />
-                    <span>Get Started</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/docs/installation" || pathname.startsWith("/docs/installation/")}>
-                  <Link href="/docs/installation">
-                    <Code className="h-4 w-4" />
                     <span>Installation</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
               <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/docs/auth" || pathname.startsWith("/docs/auth/")}>
-                  <Link href="/docs/auth">
+                <SidebarMenuButton asChild isActive={pathname === "/docs/createlightauth" || pathname.startsWith("/docs/createlightauth/")}>
+                  <Link href="/docs/createlightauth">
                     <KeyRound className="h-4 w-4" />
                     <span>Create Light Auth</span>
                   </Link>
@@ -146,32 +139,23 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                 {pathname === "/docs/metadata" || pathname.startsWith("/docs/metadata/") ? (
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuSubButton asChild isActive={pathname === "/docs/metadata/session"}>
+                      <SidebarMenuButton asChild isActive={pathname === "/docs/metadata/session"}>
                         <Link href="/docs/metadata/session">
                           <Shield className="h-4 w-4" />
                           Session
                         </Link>
-                      </SidebarMenuSubButton>
+                      </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuSubButton asChild isActive={pathname === "/docs/metadata/user"}>
+                      <SidebarMenuButton asChild isActive={pathname === "/docs/metadata/user"}>
                         <Link href="/docs/metadata/user">
                           <User className="h-4 w-4" />
                           User
                         </Link>
-                      </SidebarMenuSubButton>
+                      </SidebarMenuButton>
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
                 ) : null}
-              </SidebarMenuItem>
-
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/docs/session" || pathname.startsWith("/docs/signout/")}>
-                  <Link href="/docs/session">
-                    <Shield className="h-4 w-4" />
-                    <span>Session</span>
-                  </Link>
-                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>

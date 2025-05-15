@@ -1,6 +1,8 @@
 import { CodeBlock } from "@/components/code-block";
-import { FileText, Info } from "lucide-react";
+import { Callout } from "@/components/ui/callout";
+import { BookOpen, ExternalLink, FileText, Info } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Authentication Flow - Light-Auth Documentation",
@@ -10,17 +12,23 @@ export const metadata: Metadata = {
 export default function SessionPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">Sesion</h1>
+      <h1>Session</h1>
       <p className="text-lg text-muted-foreground">Understanding how session is working.</p>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Overview</h2>
+        <h2>
+          <BookOpen className="text-blue-600 mr-2" />
+          Overview
+        </h2>
         <p>Light-Auth implements a secure, modern authentication flow based on JWT tokens.</p>
         <p>
           This page explains what is the session token and the difference between the session object, retrieved with getSession() and the user object, retrieved
           with getUser().
         </p>
-        <h2 className="text-2xl font-semibold mt-8">Authentication Process</h2>
+        <h2>
+          <BookOpen className="text-blue-600 mr-2" />
+          Authentication flow
+        </h2>
 
         <p>The authentication process in Light-Auth is designed to be simple and secure. It involves the following steps:</p>
 
@@ -121,7 +129,10 @@ export default function SessionPage() {
           </div>
         </div>
 
-        <h2 className="text-2xl font-semibold mt-8">Session Object</h2>
+        <h2>
+          <BookOpen className="text-blue-600 mr-2" />
+          Session object
+        </h2>
 
         <p>
           The session object represents the current user's session. It contains the minimal amount of information about the user's authentication status and
@@ -157,11 +168,11 @@ export default function SessionPage() {
           The user object is returned by the <code>getUser()</code> function. See documentation
         </p>
       </div>
-      <h2 className="text-2xl font-semibold mt-8">Get the Session object </h2>
+      <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-3">Get the Session object </h3>
       <p>
         You can get the session object by using the <code>getSession()</code> function. This function is available in the <code>auth</code> module.
       </p>
-      <CodeBlock lang="ts" title="src/app/home.tsx">
+      <CodeBlock lang="tsx" title="src/app/home.tsx">
         {`import { getSession } from "@/lib/auth";
 
 export default async function Home() {
@@ -197,7 +208,7 @@ export default async function Home() {
         This endpoint is automatically created by Light-Auth and is used to get the session object from the server.
       </p>
       <p>Here is an example of how to get the session object from the client side, using a react hook:</p>
-      <CodeBlock lang="ts" title="src/app/client-component.tsx">
+      <CodeBlock lang="tsx" title="src/app/client-component.tsx">
         {`'use client';
 export function useSession() {
     const [session, setSession] = useState<Session | null>(null);
@@ -215,30 +226,39 @@ export function useSession() {
 }`}
       </CodeBlock>
 
-      <div className="flex items-center gap-3 rounded-md border border-green-500 bg-green-50 px-4 py-3 text-green-800">
-        <FileText className="h-5 w-5 flex-shrink-0" />
-        <span className="flex-1 text-left">
-          the <code>useSession</code> function is already part of the <code>light-auth-nextjs-client</code> module. See documentation for more details.
-        </span>
-      </div>
+      <Callout variant="success" className="mt-4">
+        the <code>useSession</code> function is already part of the <code>light-auth-nextjs-client</code> module. See documentation for more details.
+      </Callout>
 
-      <h2 className="text-2xl font-semibold mt-8">Session object vs User object</h2>
+      <h2>
+        <BookOpen className="text-blue-600 mr-2" />
+        Session vs User
+      </h2>
+      <ul className="list-disc pl-6 space-y-2">
+        <li>
+          The session object is a lightweight representation of the user's session, while the user object contains more detailed information about the user.
+        </li>
+        <li>
+          The session object is used to manage the user's session, while the user object is used to manage the user's profile and other related information.
+        </li>
+        <li>The session object is stored in a secure cookie, while the user object is stored in a datastore.</li>
+        <li>
+          The session object is returned by the <code>getSession()</code> function, while the user object is returned by the <code>getUser()</code> function.
+        </li>
+      </ul>
       <p>
-        <ul className="list-disc pl-6 space-y-2">
-          <li>
-            The session object is a lightweight representation of the user's session, while the user object contains more detailed information about the user.
-          </li>
-          <li>
-            The session object is used to manage the user's session, while the user object is used to manage the user's profile and other related information.
-          </li>
-          <li>The session object is stored in a secure cookie, while the user object is stored in a datastore.</li>
-          <li>
-            The session object is returned by the <code>getSession()</code> function, while the user object is returned by the <code>getUser()</code> function.
-          </li>
-        </ul>
+        {" "}
+        More information about the user object can be found in the{" "}
+        <Link href="/docs/metadata/user" className="text-blue-600 hover:underline inline-flex">
+          User documentation
+          <ExternalLink className="ml-2 h-4 w-4 self-center" />
+        </Link>
+        . More information about the user object can be found in the More information about the user object can be found in the More information about the user
+        object can be found in the More information about the user object can be found in the More information about the user object can be found in the More
+        information about the user object can be found in the More information about the user object can be found in the{" "}
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8">Add session properties</h2>
+      <h2>Add session properties</h2>
       <p>
         You can add custom properties to the session object by using the <code>onSessionSaving</code> function in the configuration.
       </p>
@@ -271,7 +291,7 @@ export function useSession() {
     },
   });`}</CodeBlock>
 
-      <h2 className="text-2xl font-semibold mt-8">Session Store</h2>
+      <h2>Session Store</h2>
 
       <p>
         The session store is a secure cookie that contains the session object. The session store is used to manage the user's session and is automatically

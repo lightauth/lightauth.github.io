@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function DocsPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">Light-Auth Documentation</h1>
+      <h1>Light-Auth Documentation</h1>
       <p className="text-lg text-muted-foreground">
         Light-Auth is a lightweight, secure authentication framework designed for modern web applications.
       </p>

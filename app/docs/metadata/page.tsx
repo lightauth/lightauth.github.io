@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import WorkflowExplanation from "@/components/workflow-explanation";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { FileText, Info, InfoIcon } from "lucide-react";
+import { BookOpen, FileText, Info, InfoIcon } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,49 +15,36 @@ export const metadata: Metadata = {
 export default function MetadataPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">Metadata management</h1>
+      <h1>Metadata management</h1>
       <p className="text-lg text-muted-foreground">Understanding how session and user information are handled by light-auth.</p>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-          <InfoIcon className="text-blue-600 w-5 h-5" /> Overview
+        <h2>
+          <BookOpen className="text-blue-600 mr-2" /> Overview
         </h2>
-        <p className="text-slate-700 dark:text-slate-300 mb-4">Light-Auth implements a secure, modern authentication flow based on JWT tokens.</p>
-        <p className="text-slate-700 dark:text-slate-300 mb-4">
-          This page explains what is the session token and the difference between the session object, retrieved with getSession() and the user object, retrieved
-          with getUser().
+        <p className="mb-4">
+          <strong>Light-Auth</strong> implements a secure, modern authentication flow based on <strong>JWT tokens</strong>.
+        </p>
+        <p className="mb-4">
+          This page explains what is the session token and the difference between the session object, retrieved with <code>getSession()</code> and the user
+          object, retrieved with <code>getUser()</code>.
         </p>
         <section className="mb-12">
           <div className="mx-auto">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-blue-600 mr-2"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
-                <path d="m12 8-2.2 2.2" />
-                <path d="M17.8 5.2C17.8 5.2 16 7 12 7s-5.8-1.8-5.8-1.8" />
-                <path d="M12 16v-3" />
-              </svg>
+            <h2>
+              <BookOpen className="text-blue-600 mr-2" />
               Session vs User: Core Concept
             </h2>
-            <p className="text-slate-700 dark:text-slate-300 mb-4">
-              Light-Auth's key innovation is how it handles authentication data. When a user authenticates through an OAuth2/OpenID provider, Light-Auth
-              receives a JWT token containing user information and credentials. Instead of storing everything in one place, Light-Auth strategically splits this
-              data into two objects:
+            <p>
+              <strong>Light-Auth</strong>'s key innovation is how it handles authentication data. When a user authenticates through an{" "}
+              <strong>OAuth2/OpenID</strong> provider, <strong>Light-Auth</strong>
+              receives a <strong>JWT</strong> token containing user information and credentials.
             </p>
+            <p>Instead of storing everything in one place, Light-Auth strategically splits this data into two objects:</p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
               <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                <h3 className="font-medium text-slate-900 dark:text-white mb-2">Session Object</h3>
+                <h3>Session Object</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-2">
                   Contains only essential authentication data (userId, sessionId, email, expirationDate) needed for quick identity verification.
                 </p>
@@ -103,23 +90,11 @@ export default function MetadataPage() {
         </section>
         <section id="workflow" className="mb-12">
           <div className="mx-auto">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-blue-600 mr-2"
-              >
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-              </svg>
+            <h2>
+              <BookOpen className="text-blue-600 mr-2" />
               Authentication Workflow
             </h2>
+
             <Card>
               <CardContent className="pt-6">
                 <MermaidDiagram />
@@ -129,26 +104,10 @@ export default function MetadataPage() {
         </section>
         <section id="comparison" className="mb-12">
           <div className="mx-auto">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-blue-600 mr-2"
-              >
-                <path d="M16 16v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-                <path d="M22 6v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2Z" />
-              </svg>
+            <h2>
+              <BookOpen className="text-blue-600 mr-2" />
               Session vs User Comparison
             </h2>
-            {/* <Card>
-              <CardContent className="pt-6 overflow-auto"> */}
             <Table>
               <TableHeader>
                 <TableRow>
@@ -208,32 +167,16 @@ export default function MetadataPage() {
                 </TableRow>
               </TableBody>
             </Table>
-            {/* </CardContent>
-            </Card> */}
           </div>
         </section>
 
         <section id="details" className="mb-12">
           <div className="mx-auto">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-blue-600 mr-2"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4" />
-                <path d="M12 8h.01" />
-              </svg>
+            <h2>
+              <BookOpen className="text-blue-600 mr-2" />
               Workflow Details
             </h2>
+
             <Tabs defaultValue="overview">
               <TabsList className="mb-4">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
