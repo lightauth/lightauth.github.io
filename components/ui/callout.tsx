@@ -4,7 +4,7 @@ import { CircleAlert, CircleCheck, FileWarning, Info, TriangleAlert } from "luci
 
 interface CalloutProps {
   variant?: "default" | "info" | "warning" | "error" | "success";
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
 

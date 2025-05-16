@@ -6,7 +6,7 @@ import { HTMLAttributeAnchorTarget } from "react";
 export function ExternalLink({
   href,
   children,
-  target = "_self",
+  target = "_blank",
   className,
 }: {
   href: string;

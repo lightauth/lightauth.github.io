@@ -19,6 +19,9 @@ import {
   ListRestart,
   Shield,
   User,
+  ServerCog,
+  RotateCcwIcon,
+  LucideRotateCcw,
 } from "lucide-react";
 
 import {
@@ -74,6 +77,14 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                 <Link href="/docs">
                   <Home className="h-4 w-4" />
                   <span>Introduction</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild isActive={pathname === "/docs/ssr-requirements"}>
+                <Link href="/docs/ssr-requirements">
+                  <ServerCog className="h-4 w-4" />
+                  <span>SSR Requirements</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -156,6 +167,15 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
                 ) : null}
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/docs/refresh-token" || pathname.startsWith("/docs/refresh-token/")}>
+                  <Link href="/docs/refresh-token">
+                    <LucideRotateCcw className="h-4 w-4" />
+                    <span>Refresh Token</span>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
