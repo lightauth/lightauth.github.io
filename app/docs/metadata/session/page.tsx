@@ -250,15 +250,12 @@ export function useSession() {
         </li>
       </ul>
       <p>
-        {" "}
         More information about the user object can be found in the{" "}
         <Link href="/docs/metadata/user" className="text-blue-600 hover:underline inline-flex">
           User documentation
           <ExternalLink className="ml-2 h-4 w-4 self-center" />
         </Link>
-        . More information about the user object can be found in the More information about the user object can be found in the More information about the user
-        object can be found in the More information about the user object can be found in the More information about the user object can be found in the More
-        information about the user object can be found in the More information about the user object can be found in the{" "}
+        .
       </p>
 
       <h2>Add session properties</h2>

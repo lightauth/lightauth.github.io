@@ -302,6 +302,10 @@ export default function DocsPage() {
                     </div>
                   </li>
                 </ul>
+                <Callout className="mb-6" variant="warning">
+                  A version of light-auth is currently in development for client-side only applications, with providers compatible with the{" "}
+                  <ExternalLink href="https://oauth.net/2/pkce/">PCKSE protocol</ExternalLink>.
+                </Callout>
               </CardContent>
             </Card>
           </div>

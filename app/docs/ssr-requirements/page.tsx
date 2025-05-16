@@ -139,7 +139,7 @@ export default function SsrRequirementsPage() {
             Light-Auth is <strong>not compatible</strong> with client-side only applications built with frameworks like:
           </p>
 
-          <Table className="mb-6">
+          <Table className="mb-6 border">
             <TableHeader>
               <TableRow>
                 <TableHead>Framework</TableHead>

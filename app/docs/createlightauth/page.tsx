@@ -119,7 +119,7 @@ const microsoftProvider: LightAuthProvider = {
           .
         </Callout>
 
-        <Table className="w-full border-collapse">
+        <Table className="w-full border">
           <TableHeader>
             <TableRow className="bg-slate-100 dark:bg-slate-800">
               <TableHead className="border border-slate-200 dark:border-slate-700 px-4 py-2 text-left text-sm font-medium text-slate-700 dark:text-slate-300">
@@ -244,7 +244,7 @@ export const {
 });`}
         </CodeBlock>
 
-        <Table className="w-full border-collapse mb-2">
+        <Table className="w-full border mb-2">
           <TableHeader>
             <TableRow className="bg-slate-100 dark:bg-slate-800">
               <TableHead className="border border-slate-200 dark:border-slate-700 px-4 py-2 text-left text-sm font-medium text-slate-700 dark:text-slate-300">
@@ -281,7 +281,11 @@ export const {
                 <Badge variant={"outline"} className="mr-2">
                   Optional
                 </Badge>{" "}
-                Base path for the API routes. Default: "/api/auth"
+                Base path for the API routes. Default: <code>"/api/auth"</code>. See the{" "}
+                <ExternalLink href="/docs/handlers" target="_parent">
+                  API handlers
+                </ExternalLink>{" "}
+                for more information.
               </TableCell>
             </TableRow>
             <TableRow>
@@ -295,7 +299,7 @@ export const {
                 <Badge variant={"outline"} className="mr-2">
                   Optional
                 </Badge>{" "}
-                Additional OAuth scopes to request
+                Object containing environment variables. Default: <code>process.env</code>. <br />
               </TableCell>
             </TableRow>
             <TableRow>
@@ -350,7 +354,7 @@ export const {
           <code>light-auth-express</code>, <code>light-auth-astro</code>) except for the user adapter, which is null by default.
         </Callout>
 
-        <Table className="w-full border-collapse mb-2">
+        <Table className="w-full border mb-2">
           <TableHeader>
             <TableRow className="bg-slate-100 dark:bg-slate-800">
               <TableHead className="border border-slate-200 dark:border-slate-700 px-4 py-2 text-left text-sm font-medium text-slate-700 dark:text-slate-300">

@@ -22,6 +22,8 @@ import {
   ServerCog,
   RotateCcwIcon,
   LucideRotateCcw,
+  Twitter,
+  Github,
 } from "lucide-react";
 
 import {
@@ -40,6 +42,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
+import Image from "next/image";
 
 interface DocsSidebarProps {
   className?: string;
@@ -54,16 +57,14 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
     <Sidebar className={className}>
       <SidebarHeader>
         <Link href="/" className="flex items-center gap-2 px-2 py-3">
-          <div className="rounded-full bg-blue-100 p-1">
-            <BookMarked className="h-5 w-5 text-blue-600" />
-          </div>
+          <Image src="/light-auth.svg" alt="Light-Auth Logo" width={18} height={18} />
           <span className="font-semibold">Light-Auth Docs</span>
         </Link>
         <form className="mt-2">
           <SidebarGroup className="py-0">
             <SidebarGroupContent className="relative">
               <SidebarInput placeholder="Search documentation..." />
-              <Search className="pointer-events-none absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 select-none opacity-50" />
+              <Search className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 select-none opacity-50" />
             </SidebarGroupContent>
           </SidebarGroup>
         </form>
@@ -126,16 +127,7 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                 <SidebarMenuButton asChild isActive={pathname === "/docs/signin" || pathname.startsWith("/docs/signin/")}>
                   <Link href="/docs/signin">
                     <LogIn className="h-4 w-4" />
-                    <span>Sign In</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/docs/signout" || pathname.startsWith("/docs/signout/")}>
-                  <Link href="/docs/signout">
-                    <LogOut className="h-4 w-4" />
-                    <span>Sign Out</span>
+                    <span>Sign In - Sign Out</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -144,7 +136,7 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                 <SidebarMenuButton asChild isActive={pathname === "/docs/metadata" || pathname.startsWith("/docs/metadata/")}>
                   <Link href="/docs/metadata">
                     <Lightbulb className="h-4 w-4" />
-                    <span>metadata</span>
+                    <span>Metadatas</span>
                   </Link>
                 </SidebarMenuButton>
                 {pathname === "/docs/metadata" || pathname.startsWith("/docs/metadata/") ? (
@@ -181,7 +173,7 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarGroup>
+        {/* <SidebarGroup>
           <SidebarGroupLabel>Client Side</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -223,7 +215,7 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
-        </SidebarGroup>
+        </SidebarGroup> */}
 
         <SidebarGroup>
           <SidebarGroupLabel>Reference</SidebarGroupLabel>
@@ -257,22 +249,22 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                 ) : null}
               </SidebarMenuItem>
 
-              <SidebarMenuItem>
+              {/* <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname === "/docs/api-reference"}>
                   <Link href="/docs/api-reference">
                     <Code className="h-4 w-4" />
                     <span>API Reference</span>
                   </Link>
                 </SidebarMenuButton>
-              </SidebarMenuItem>
+              </SidebarMenuItem> */}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter>
+      <SidebarFooter className="mb-2">
         <div className="px-3 py-2">
-          <div className="rounded-md bg-blue-50 p-3">
+          <div className="rounded-md bg-blue-50 dark:bg-blue-950 p-3">
             <div className="flex items-center gap-3">
               <div className="rounded-full bg-blue-100 p-1">
                 <Lightbulb className="h-4 w-4 text-blue-600" />
@@ -280,12 +272,13 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
               <div className="text-sm font-medium">Need help?</div>
             </div>
             <div className="mt-2 text-xs">Our support team is available 24/7 to assist you with any questions or issues.</div>
-            <div className="mt-3">
-              <Link
-                href="/support"
-                className="inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
-              >
-                Contact Support
+            <div className="mt-2 text-xs">I'm kidding...</div>
+            <div className="mt-3 flex items-center gap-2">
+              <Link href="https://twitter.com/sebpertus" target="_blank">
+                <Twitter className="h-5 w-5 text-blue-600 dark:text-blue-300" />
+              </Link>
+              <Link href="https://github.com/LightAuth" target="_blank">
+                <Github className="h-5 w-5 text-blue-600 dark:text-blue-300" />
               </Link>
             </div>
           </div>

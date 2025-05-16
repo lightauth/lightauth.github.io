@@ -3,20 +3,22 @@ import { File } from "lucide-react";
 import { BundledLanguage, codeToHtml } from "shiki";
 
 interface Props {
-  children: string;
+  children?: string;
   lang: BundledLanguage;
   className?: string;
   title?: string;
 }
 
 export async function CodeBlock(props: Props) {
-  const out = await codeToHtml(props.children, {
-    lang: props.lang,
-    themes: {
-      light: "github-light",
-      dark: "github-dark",
-    },
-  });
+  const out = props.children
+    ? await codeToHtml(props.children, {
+        lang: props.lang,
+        themes: {
+          light: "github-light",
+          dark: "github-dark",
+        },
+      })
+    : "";
 
   return (
     <div>

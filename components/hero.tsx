@@ -14,7 +14,7 @@ export default function Hero() {
               <Image src="/light-auth.svg" alt="Light-Auth Logo" width={100} height={100} className="w-12 h-12 text-cyan-500" />
             </div>
           </div>
-          <h1 className="mb-6 text-lg sm:text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900 ">
+          <h1 className="flex flex-col items-center justify-center">
             <span className="block">Light-Auth</span>
             <span className="block text-blue-600">Authentication Made Simple</span>
           </h1>
