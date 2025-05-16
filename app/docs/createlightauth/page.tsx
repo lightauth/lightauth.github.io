@@ -112,9 +112,9 @@ const microsoftProvider: LightAuthProvider = {
           This means that the access token will be refreshed automatically when it expires, allowing you to make API calls without requiring the user to log in
           again.
           <br />
-          More information about offline access can be found in the{" "}
-          <ExternalLink href="/docs/offline-access" target="_blank">
-            offline access documentation
+          More information about refresh tokens can be found in the{" "}
+          <ExternalLink href="/docs/refresh-token" target="_blank">
+            refresh token documentation
           </ExternalLink>
           .
         </Callout>

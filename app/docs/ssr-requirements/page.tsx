@@ -19,13 +19,13 @@ export const metadata: Metadata = {
 export default function SsrRequirementsPage() {
   return (
     <div className="space-y-6">
+      <h1>SSR Requirements</h1>
       <Callout className="mb-6" variant="warning">
         A version of light-auth is currently in development for client-side only applications, with providers compatible with the{" "}
         <ExternalLink href="https://oauth.net/2/pkce/">PCKSE protocol</ExternalLink>.
         <br />
         This version will be available soon, but for now, please use the <strong>SSR</strong> version of light-auth.
       </Callout>
-      <h1>SSR Requirements</h1>
       <p className="text-lg text-muted-foreground">Understanding when you should use Light-Auth, and when not.</p>
 
       <section className="mb-12">
