@@ -34,7 +34,7 @@ export default function MetadataPage() {
           <h3 className="text-lg font-medium text-slate-900 dark:text-white mt-6 mb-3">Inheritance Structure</h3>
           <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 mb-6">
             <div className="flex flex-col items-center">
-              <div className="bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 px-4 py-2 rounded-md mb-2">Session Object</div>
+              <div className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-md mb-2">Session Object</div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -50,7 +50,7 @@ export default function MetadataPage() {
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <polyline points="19 12 12 19 5 12"></polyline>
               </svg>
-              <div className="bg-emerald-500 text-white px-4 py-2 rounded-md">User Object</div>
+              <div className="bg-blue-500 text-white px-4 py-2 rounded-md">User Object</div>
             </div>
           </div>
           <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-3">Properties</h3>
@@ -96,27 +96,21 @@ export default function MetadataPage() {
             <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 mb-4">
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <li className="flex items-start">
-                  <span className="bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-xs px-2 py-1 rounded mr-2 font-mono">
-                    picture
-                  </span>
+                  <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded mr-2 font-mono">picture</span>
                   <span className="text-sm text-slate-600 dark:text-slate-400">URL to user's profile picture</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-xs px-2 py-1 rounded mr-2 font-mono">
-                    accessToken
-                  </span>
+                  <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded mr-2 font-mono">accessToken</span>
                   <span className="text-sm text-slate-600 dark:text-slate-400">OAuth access token for API calls</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-xs px-2 py-1 rounded mr-2 font-mono">
+                  <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded mr-2 font-mono">
                     accessTokenExpiresAt
                   </span>
                   <span className="text-sm text-slate-600 dark:text-slate-400">Expiration timestamp for access token</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-xs px-2 py-1 rounded mr-2 font-mono">
-                    refreshToken
-                  </span>
+                  <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded mr-2 font-mono">refreshToken</span>
                   <span className="text-sm text-slate-600 dark:text-slate-400">Token used to refresh the access token</span>
                 </li>
               </ul>

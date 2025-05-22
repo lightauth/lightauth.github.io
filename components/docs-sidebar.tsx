@@ -225,7 +225,7 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
           </SidebarGroupContent>
         </SidebarGroup> */}
 
-        <SidebarGroup>
+        {/* <SidebarGroup>
           <SidebarGroupLabel>Reference</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -257,17 +257,17 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                 ) : null}
               </SidebarMenuItem>
 
-              {/* <SidebarMenuItem>
+              <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname === "/docs/api-reference"}>
                   <Link href="/docs/api-reference">
                     <Code className="h-4 w-4" />
                     <span>API Reference</span>
                   </Link>
                 </SidebarMenuButton>
-              </SidebarMenuItem> */}
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
-        </SidebarGroup>
+        </SidebarGroup> */}
       </SidebarContent>
 
       <SidebarFooter className="mb-2">
