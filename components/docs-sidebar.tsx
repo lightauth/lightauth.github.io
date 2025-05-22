@@ -51,8 +51,6 @@ interface DocsSidebarProps {
 export function DocsSidebar({ className }: DocsSidebarProps) {
   const pathname = usePathname();
 
-  console.log("pathname", pathname);
-
   return (
     <Sidebar className={className}>
       <SidebarHeader>
@@ -60,14 +58,14 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
           <Image src="/light-auth.svg" alt="Light-Auth Logo" width={18} height={18} />
           <span className="font-semibold">Light-Auth Docs</span>
         </Link>
-        <form className="mt-2">
+        {/* <form className="mt-2">
           <SidebarGroup className="py-0">
             <SidebarGroupContent className="relative">
               <SidebarInput placeholder="Search documentation..." />
               <Search className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 select-none opacity-50" />
             </SidebarGroupContent>
           </SidebarGroup>
-        </form>
+        </form> */}
       </SidebarHeader>
 
       <SidebarContent>
