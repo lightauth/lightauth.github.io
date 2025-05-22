@@ -89,6 +89,14 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild isActive={pathname === "/docs/client-server-auth"}>
+                <Link href="/docs/client-server-auth">
+                  <ServerCog className="h-4 w-4" />
+                  <span>Client / Server components</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
 
@@ -127,7 +135,7 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                 <SidebarMenuButton asChild isActive={pathname === "/docs/signin" || pathname.startsWith("/docs/signin/")}>
                   <Link href="/docs/signin">
                     <LogIn className="h-4 w-4" />
-                    <span>Sign In - Sign Out</span>
+                    <span>Sign In / Sign Out</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -136,7 +144,7 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                 <SidebarMenuButton asChild isActive={pathname === "/docs/metadata" || pathname.startsWith("/docs/metadata/")}>
                   <Link href="/docs/metadata">
                     <Lightbulb className="h-4 w-4" />
-                    <span>Metadatas</span>
+                    <span>Session / User</span>
                   </Link>
                 </SidebarMenuButton>
                 {pathname === "/docs/metadata" || pathname.startsWith("/docs/metadata/") ? (

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { CodeBlockClient } from "./code-block-client";
 import { LanguageCodeBlock } from "@/models/code-block-type";
 import { Step, Steps } from "./steps";
+import { Callout } from "./ui/callout";
 
 export default function CodeExample({ languagesCodeBlocks }: { languagesCodeBlocks: LanguageCodeBlock[] }) {
   const [currentValue, setCurrentValue] = useState(languagesCodeBlocks[0]?.name ?? "");
@@ -15,9 +16,16 @@ export default function CodeExample({ languagesCodeBlocks }: { languagesCodeBloc
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mt-8">
           <p className="mt-4 text-lg ">
-            For now, you can use light-auth with <strong>Next.js, Astro, and Express</strong>. We are working on adding support for more frameworks in the
-            future.
+            For now, you can use light-auth with <strong>Next.js, Astro, Nuxt, Sveltekit and Express</strong>. We are working on adding support for more
+            frameworks in the future.
           </p>
+          <Callout variant="info" className="mt-4">
+            The code examples show the two different ways to use <strong>light-auth</strong>: <strong>server-side</strong> logic and{" "}
+            <strong>client-side</strong> logic.
+            <br />
+            The server-side logic code is the default way to use light-auth, but you can also use the client-side logic to call the differents light-auth
+            endpoints.
+          </Callout>
           <Tabs className="w-full mt-4" onValueChange={setCurrentValue} value={currentValue}>
             <TabsList className="flex w-full justify-start gap-5">
               {languagesCodeBlocks.map((languageCodeBlocks) => (

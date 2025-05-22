@@ -1,7 +1,8 @@
+import { Bullet } from "@/components/bullet";
 import { CodeBlock } from "@/components/code-block";
 import { Callout } from "@/components/ui/callout";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, ExternalLink, FileText, Info } from "lucide-react";
+import { BookOpen, Check, ExternalLink, FileText, Info, SplineIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -205,22 +206,24 @@ export default async function Home() {
       </CodeBlock>
 
       <p>
-        From the client side you can make a request to the{" "}
-        <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">/api/auth/session</code> endpoint to get the session
-        object. <br />
-        This endpoint is automatically created by Light-Auth and is used to get the session object from the server.
+        From the client side you can get the client session object by using the <code>getSession()</code> function from the client sdk, using the{" "}
+        <code>CreateLightAuthClient</code> function.
       </p>
       <p>Here is an example of how to get the session object from the client side, using a react hook:</p>
       <CodeBlock lang="tsx" title="src/app/client-component.tsx">
-        {`'use client';
+        {`"use client";
+
+import { CreateLightAuthClient } from "@light-auth/nextjs/client";
+
+export const { getSession, getUser } = CreateLightAuthClient();
+
 export function useSession() {
     const [session, setSession] = useState<Session | null>(null);
 
     useEffect(() => {
         async function fetchSession() {
-        const response = await fetch('/api/auth/session');
-        const data = await response.json();
-        setSession(data);
+          const session = await getSession();
+          setSession(session);
         }
         fetchSession();
     }, []);
@@ -230,7 +233,9 @@ export function useSession() {
       </CodeBlock>
 
       <Callout variant="success" className="mt-4">
-        the <code>useSession</code> function is already part of the <code>light-auth-nextjs-client</code> module. See documentation for more details.
+        The <code>CreateLightAuthClient</code> function is used to create a client-side instance of Light-Auth. It provides the same functions as the
+        server-side instance, but is designed to work in a client-side environment. <br />
+        You may probably create a <code>/app/auth-client.ts</code> file to export the client instance, and use it in your client components.
       </Callout>
 
       <h2>
@@ -258,24 +263,63 @@ export function useSession() {
         .
       </p>
 
-      <h2>Add session properties</h2>
-      <p>
-        You can add custom properties to the session object by using the <code>onSessionSaving</code> function in the configuration.
-      </p>
-      <p>This function is called before the session object is saved in the cookie.</p>
+      <h2>
+        <BookOpen className="text-blue-600 mr-2" />
+        Add custom Session and User properties
+      </h2>
+      <div>
+        <p>You can add custom properties to the Session (or User) object by:</p>
+        <ul className="space-y-2 text-slate-600 dark:text-slate-400">
+          <li className="flex items-start">
+            <Bullet>1</Bullet>
+            Extending the <code>Session</code> (or / and the <code>User</code>) object with a custom interface
+          </li>
+          <li className="flex items-start">
+            <Bullet>2</Bullet>
+            Using the <code>onSessionSaving</code> (or / and the <code>onUserSaving</code>) function in the configuration.
+          </li>
+        </ul>
+      </div>
       <p>
         Here is an example where we get the <code>given_name</code> and <code>family_name</code> from the <code>idToken</code> and add them to the session
-        object:
+        object.
+        <br />
+        Then we get others properties from the idToken and add them to the user object:
+      </p>
+
+      <h3>Add some custom properties to the session object by extending the session interface:</h3>
+
+      <CodeBlock lang="ts" title="src/app/auth.ts">{`import { LightAuthSession, LightAuthUser } from "@light-auth/core";
+
+export type MyLightAuthSession = LightAuthSession & {
+  // Add any additional properties you want to include in your custom session type
+  firstName?: string;
+  lastName?: string;
+};
+
+export type MyLightAuthUser = LightAuthUser<MyLightAuthSession> & {
+  // Add any additional properties you want to include in your custom user type
+  email_verified?: boolean;
+  iss?: string;
+  sub?: string;
+};
+`}</CodeBlock>
+
+      <h3>Get custom properties from the authentication providers:</h3>
+
+      <p>
+        Add the custom properties values to the session object by using the <code>onSessionSaving</code> and to the user object using the{" "}
+        <code>onUserSaving</code> function in the configuration:
       </p>
 
       <CodeBlock lang="ts" title="src/app/auth.ts">{`export const { providers, handlers, signIn, signOut, getSession, getUser } =
-  CreateLightAuth({
+  CreateLightAuth<MyLightAuthSession, MyLightAuthUser>({
     providers: [googleProvider, microsoftProvider],
     onSessionSaving: async (session, tokens) => {
       if (!tokens) return session;
       if (!tokens.idToken()) return session;
 
-      // optional: Add custom claims to the session
+      // Add custom claims to the session
       // This example adds the first and last name from the idToken to the session
       const idToken = JSON.parse(
         Buffer.from(tokens.idToken().split(".")[1], "base64").toString()
@@ -289,9 +333,26 @@ export function useSession() {
 
       return session;
     },
+
+  onUserSaving: async (user, tokens) => {
+    if (!tokens) return user;
+    if (!tokens.idToken()) return user;
+
+    // optional: Add custom claims to the user
+    const idToken = JSON.parse(Buffer.from(tokens.idToken().split(".")[1], "base64").toString());
+
+    if ("iss" in idToken && typeof idToken.iss === "string") user.iss = idToken.iss;
+    if ("email_verified" in idToken && typeof idToken.email_verified === "boolean") user.email_verified = idToken.email_verified;
+    if ("sub" in idToken && typeof idToken.sub === "string") user.sub = idToken.sub;
+
+    return user;
+  },    
   });`}</CodeBlock>
 
-      <h2>Session Store</h2>
+      <h2>
+        <BookOpen className="text-blue-600 mr-2" />
+        Session Store
+      </h2>
 
       <p>
         The session store is a secure cookie that contains the session object. The session store is used to manage the user's session and is automatically

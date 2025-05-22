@@ -72,15 +72,24 @@ export default function SsrRequirementsPage() {
                 <div>
                   <div className="flex items-baseline">
                     <h3>Nuxt.js</h3>
-                    <Badge className="ml-2" variant="default">
-                      Work In Progress
-                    </Badge>
                   </div>
                   <p className="text-sm">Vue-based SSR framework</p>
                 </div>
               </CardContent>
             </Card>
-
+            <Card>
+              <CardContent className="flex items-center mt-2">
+                <div className="relative w-12 h-12 rounded-full bg-gray-200 dark:bg-white flex items-center justify-center mr-3 flex-shrink-0">
+                  <Image src={"/sveltekit.svg"} className="absolute top-[6px] " alt="SvelteKit" width={30} height={30} />
+                </div>
+                <div>
+                  <div className="flex items-baseline">
+                    <h3>SvelteKit</h3>
+                  </div>
+                  <p className="text-sm">Svelte-based SSR framework</p>
+                </div>
+              </CardContent>
+            </Card>
             <Card>
               <CardContent className="flex items-center mt-2">
                 <div className="relative w-12 h-12 rounded-full bg-gray-200 dark:bg-white flex items-center justify-center mr-3 flex-shrink-0">
@@ -170,6 +179,10 @@ export default function SsrRequirementsPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <Callout className="mb-6" variant="warning">
+            A version of light-auth is currently in development for client-side only applications, with providers compatible with the{" "}
+            <ExternalLink href="https://oauth.net/2/pkce/">PCKSE protocol</ExternalLink>.
+          </Callout>
         </div>
       </section>
     </div>

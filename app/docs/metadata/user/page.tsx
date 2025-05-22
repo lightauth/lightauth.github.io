@@ -1,3 +1,4 @@
+import { Bullet } from "@/components/bullet";
 import { CodeBlock } from "@/components/code-block";
 import { Callout } from "@/components/ui/callout";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
@@ -227,47 +228,61 @@ export default async function Home() {
       </section>
 
       <section id="user-object-extending" className="mb-12">
-        <div className="mx-auto">
-          <h2>
-            <BookOpen className="text-blue-600 mr-2" />
-            Extending the User Object
-          </h2>
-          <p className="text-slate-700 dark:text-slate-300 mb-4">Adding custom properties to the User object.</p>
-          <p className="text-slate-700 dark:text-slate-300 mb-4">
-            <strong>Light-Auth</strong> allows you to extend the User object with custom properties to store additional application-specific data. This can be
-            done by when the authentication process is completed, using the <code>onUserSaving</code> callback in the configuration.
-          </p>
-          <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-3">Custom User Class Example</h3>
-          <CodeBlock lang="tsx" title="./src/auth.ts" className="mb-4">
-            {`export const { providers, handlers, signIn, signOut, getSession, getUser } =
-  CreateLightAuth({
-    providers: [googleProvider, microsoftProvider],
-    onUserSaving: async (user, tokens) => {
-      if (!tokens) return user;
-      if (!tokens.idToken()) return user;
-
-      // optional: Add custom claims to the user
-      // This example adds the first and last name from the idToken to the user
-      const idToken = JSON.parse(
-        Buffer.from(tokens.idToken().split(".")[1], "base64").toString()
-      );
-
-      if ("given_name" in idToken && typeof idToken.given_name === "string")
-        user["firstName"] = idToken.given_name;
-
-      if ("family_name" in idToken && typeof idToken.family_name === "string")
-        user["lastName"] = idToken.family_name;
-
-      return user;
-    },
-  })`}
-          </CodeBlock>
-
-          <Callout variant="warning" className="mb-4">
-            When extending the User object, you'll also need to implement a custom UserAdapter that knows how to store and retrieve your custom properties. See
-            the UserAdapter section below for details.
-          </Callout>
+        <h2>
+          <BookOpen className="text-blue-600 mr-2" />
+          Add custom User properties
+        </h2>
+        <div>
+          <p>You can add custom properties to the User object by:</p>
+          <ul className="space-y-2 text-slate-600 dark:text-slate-400">
+            <li className="flex items-start">
+              <Bullet>1</Bullet>
+              Extending the <code>User</code> object with a custom interface
+            </li>
+            <li className="flex items-start">
+              <Bullet>2</Bullet>
+              Using the <code>onUserSaving</code> function in the configuration.
+            </li>
+          </ul>
         </div>
+        <p>Here is an example where we get additional properties from the id token and add them to the user object.</p>
+
+        <h3 className="mb-2">Add some custom properties to the user object by extending the user interface:</h3>
+
+        <CodeBlock lang="ts" title="src/app/auth.ts">{`import { LightAuthSession, LightAuthUser } from "@light-auth/core";
+
+export type MyLightAuthUser = LightAuthUser<LightAuthSession> & {
+  // Add any additional properties you want to include in your custom user type
+  email_verified?: boolean;
+  iss?: string;
+  sub?: string;
+};
+`}</CodeBlock>
+
+        <h3 className="mb-2">Get custom properties from the authentication providers:</h3>
+
+        <p>
+          Add the custom properties values to the user object by using the <code>onUserSaving</code> function in the configuration:
+        </p>
+
+        <CodeBlock lang="ts" title="src/app/auth.ts">{`export const { providers, handlers, signIn, signOut, getSession, getUser } =
+  CreateLightAuth<LightAuthSession, MyLightAuthUser>({
+    providers: [googleProvider, microsoftProvider],
+
+  onUserSaving: async (user, tokens) => {
+    if (!tokens) return user;
+    if (!tokens.idToken()) return user;
+
+    // optional: Add custom claims to the user
+    const idToken = JSON.parse(Buffer.from(tokens.idToken().split(".")[1], "base64").toString());
+
+    if ("iss" in idToken && typeof idToken.iss === "string") user.iss = idToken.iss;
+    if ("email_verified" in idToken && typeof idToken.email_verified === "boolean") user.email_verified = idToken.email_verified;
+    if ("sub" in idToken && typeof idToken.sub === "string") user.sub = idToken.sub;
+
+    return user;
+  },    
+  });`}</CodeBlock>
       </section>
 
       <section id="user-adapter" className="mb-12">

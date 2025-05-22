@@ -94,7 +94,9 @@ export default function Hero() {
                     </svg>
                     <h3 className="font-medium">Flexible</h3>
                   </div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Adaptable storage with FileUserAdapter or DatabaseAdapter</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    Authentication entry point made possible from the server side and from the client side
+                  </p>
                 </div>
               </div>
             </CardContent>

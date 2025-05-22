@@ -247,6 +247,15 @@ export default function DocsPage() {
                   </li>
                   <li className="flex items-start">
                     <div className="relative w-8 h-8 rounded-full bg-gray-200 dark:bg-white flex items-center justify-center mr-3 flex-shrink-0">
+                      <Image src={"/sveltekit.svg"} className="absolute top-[6px] " alt="Sveltekit" width={20} height={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white">Sveltekit</h4>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">Svelte-based SSR framework support</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="relative w-8 h-8 rounded-full bg-gray-200 dark:bg-white flex items-center justify-center mr-3 flex-shrink-0">
                       <Image src={"/express.svg"} className="fill-orange-700" alt="Express" width={20} height={20} />
                     </div>
                     <div>
