@@ -2,6 +2,8 @@ import { LanguageCodeBlock } from "../../models/code-block-type";
 import Image from "next/image";
 import { highlight } from "@/lib/highlight";
 import Link from "next/link";
+import { Callout } from "@/components/ui/callout";
+import { ExternalLink } from "@/components/external-link";
 
 export const languagesCodeBlocks: LanguageCodeBlock[] = [
   {
@@ -38,17 +40,17 @@ export const languagesCodeBlocks: LanguageCodeBlock[] = [
       {
         name: "auth.ts",
         codeDescription: "./app/lib/auth.ts",
-        title: "Server side authentication logic",
+        title: "Server Configuration",
         description: (
           <div>
-            This file contains the authentication logic and configuration. See{" "}
-            <Link className="text-blue-600 hover:underline" href={"/docs/"}>
-              documentation
-            </Link>{" "}
-            for more details.
+            <div>
+              This file contains the authentication logic and configuration. The exports consts are <code>providers</code>, <code>handlers</code>,{" "}
+              <code>signIn</code>, <code>signOut</code>, <code>getSession</code>, and <code>getUser</code>.
+            </div>
+            <div>These constants are used throughout the application to manage authentication.</div>
           </div>
         ),
-        codeString: `import { Google } from "arctic";
+        codeString: `import { Google, Github } from "arctic";
 import { CreateLightAuth } from "@light-auth/nextjs";
 
 const googleProvider = {
@@ -60,21 +62,29 @@ const googleProvider = {
   ),
 };
 
+
+const githubProvider = {
+  providerName: "github",
+  arctic: new GitHub(
+    process.env.GITHUB_CLIENT_ID,
+    process.env.GITHUB_CLIENT_SECRET,
+    "http://localhost:3000/api/auth/callback/github"
+  ),
+};
+
 export const { providers, handlers, signIn, signOut, getSession, getUser } = CreateLightAuth({
-  providers: [googleProvider]
+  providers: [googleProvider, githubProvider]
 });`,
         language: "ts",
       },
       {
         name: "handlers.ts",
-        title: "API Handlers",
+        title: "Authentication Handlers",
         description: (
           <div>
-            This file contains the API handlers for authentication. See{" "}
-            <Link className="text-blue-600 hover:underline" href={"/docs/"}>
-              documentation
-            </Link>{" "}
-            for more details.
+            This file contains the authentication handlers for the API. <br />
+            These handlers are responsible for processing authentication requests and returning the appropriate responses. <br />
+            The handlers are exported as <code>GET</code> and <code>POST</code> methods.
           </div>
         ),
         codeDescription: "./app/api/auth/[...lightauth].ts",
@@ -83,23 +93,22 @@ export const { GET, POST } = handlers;`,
         language: "ts",
       },
       {
-        name: "auth-client.ts",
-        codeDescription: "./app/lib/auth-client.ts",
-        title: "Client side Authentication Logic",
-        description: <div>This file contains the authentication objects you can use in the client side.</div>,
-        codeString: `"use client";
-
-import { CreateLightAuthClient } from "@light-auth/nextjs/client";
-
-export const { getSession, getUser, signIn, signOut } = CreateLightAuthClient();
-`,
-        language: "ts",
-      },
-      {
         name: "login.tsx",
         codeDescription: "./app/login.tsx",
         title: "Login Page",
-        description: <div>This file contains the login page. You can choose a client side logic or a form action to login using your provider.</div>,
+        description: (
+          <div>
+            <div>This file contains the login page using a form action to login using your provider.</div>
+            <div>
+              You can also use client components to trigger the login process. <br />
+              See the documentation{" "}
+              <Link href="/docs/client-server-auth" className="text-blue-500 underline">
+                Client Components
+              </Link>{" "}
+              for more information.
+            </div>
+          </div>
+        ),
         codeString: `import { signIn } from "@/lib/auth";
 import { ClientLoginButton } from "@/components/client/client-login-button";
 
@@ -114,39 +123,9 @@ export default function LoginPage() {
       >
         <button type="submit">login using a form action</button>
       </form>
-      <ClientLoginButton providerName="google" callbackUrl="/profile" >
-        login using client side
-      </ClientLoginButton>
     </div>
   );
 }`,
-        language: "tsx",
-      },
-      {
-        name: "client-login-button.tsx",
-        codeDescription: "./components/client/client-login-button.tsx",
-        title: "Client button",
-        description: (
-          <div>
-            This file contains the client login button component. You can use this component to trigger the login process using the specified provider on the
-            client side.
-          </div>
-        ),
-        codeString: `"use client";
-
-import { signIn } from "@/lib/auth-client";
-
-export function ClientLoginButton(
-{ children, providerName, callbackUrl }: 
-{ children: React.ReactNode; providerName: string; callbackUrl: string }) {
-
-  return (
-    <button type="button" onClick={() => signIn(providerName, callbackUrl)}>
-      {children}
-    </button>
-  );
-}
-`,
         language: "tsx",
       },
       {
@@ -176,13 +155,7 @@ export default async function Home() {
     </div>
   );
 }`,
-        language: "ts",
-      },
-
-      {
-        name: "example",
-        title: "GitHub Example",
-        description: <div>See this github sample for a simple implementation of light-auth with Next JS</div>,
+        language: "tsx",
       },
     ],
   },
@@ -220,8 +193,16 @@ export default async function Home() {
       {
         name: "auth.ts",
         codeDescription: "./server/auth.ts",
-        title: "Server side authentication logic",
-        description: <div>This file contains the server side authentication logic and configuration.</div>,
+        title: "Server Configuration",
+        description: (
+          <div>
+            <div>
+              This file contains the authentication logic and configuration. The exports consts are <code>providers</code>, <code>handlers</code>,{" "}
+              <code>signIn</code>, <code>signOut</code>, <code>getSession</code>, and <code>getUser</code>.
+            </div>
+            <div>These constants are used throughout the application to manage authentication.</div>
+          </div>
+        ),
         codeString: `import { Google } from "arctic";
 import { CreateLightAuth } from "@light-auth/nuxt";
 
@@ -239,15 +220,29 @@ export const { providers, handlers, signIn, signOut, getSession, getUser } = Cre
       },
       {
         name: "handlers.ts",
-        title: "API Handlers",
+        title: "Authentication Handlers",
+        description: (
+          <div>
+            This file contains the authentication handlers for the API. <br />
+            These handlers are responsible for processing authentication requests and returning the appropriate responses. <br />
+            The handlers are exported using the Nuxt <code>defineEventHandler</code> function.
+          </div>
+        ),
         codeDescription: "./server/api/auth/[...lightauth].ts",
         codeString: `import { handlers } from "~/server/auth";
 export default defineEventHandler(handlers);`,
         language: "ts",
       },
       {
-        name: "handlers.ts",
+        name: "actions.ts",
         title: "Form Actions",
+        description: (
+          <div>
+            This file contains the form action for the login process. <br />
+            The login action is responsible for processing the login form submission and redirect the request to the appropriate provider. <br />
+            The action is exported using the Nuxt <code>defineEventHandler</code> function.
+          </div>
+        ),
         codeDescription: "./server/api/actions/login.ts",
         codeString: `import { signIn } from "~/server/auth";
 
@@ -258,39 +253,54 @@ export default defineEventHandler(async (event) => {
         language: "ts",
       },
       {
-        name: "auth-client.ts",
-        title: "Client side Authentication Logic",
-        codeDescription: "./utils/auth-client.ts",
-        codeString: `import { CreateLightAuthClient } from "@light-auth/nuxt/client";
-
-export const { signIn, signOut, getSession, getUser } = CreateLightAuthClient();`,
-        language: "ts",
-      },
-      {
-        name: "index.vue",
-        codeDescription: "./pages/index.vue",
-        codeString: `<script setup lang="ts">
-import { getSession, getUser, signIn, signOut } from "#imports";
-const session = await getSession();
-</script>
-
-<template>
-  <div>
-    <div v-if="session != null">
-      <h1>You are logged in!</h1>
-      <button @click="signOut()">Logout</button>
-      <p>{{ session.email }}</p>
-    </div>
-
-    <div v-if="session == null">
+        name: "login.vue",
+        codeDescription: "./pages/login.vue",
+        title: "Login Page",
+        description: (
+          <div>
+            <div>This file contains the login page using a form action to login using your provider.</div>
+            <div>
+              You can also use client components to trigger the login process. <br />
+              See the documentation{" "}
+              <Link href="/docs/client-server-auth" className="text-blue-500 underline">
+                Client Components
+              </Link>{" "}
+              for more information.
+            </div>
+          </div>
+        ),
+        codeString: `<template>
+    <div>
       <form action="api/actions/login" method="POST">
         <input type="hidden" name="providerName" value="google" />
         <input type="hidden" name="callbackUrl" value="/dashboard" />
         <button type="submit">Sign in using POST action</button>
       </form>
-
-      <button @click="signIn('google', '/dashboard')">Sign in from Client side</button>
     </div>
+  </div>
+</template>
+`,
+        language: "vue",
+      },
+      {
+        name: "profile.vue",
+        codeDescription: "./app/profile.vue",
+        title: "Profile Page",
+        description: <div>Retrieves the session information to check if user is authenticated or not and displays it.</div>,
+        codeString: `<script setup lang="ts">
+import { CreateLightAuthClient } from "@light-auth/nuxt/client";
+const { getSession } = CreateLightAuthClient();
+const session = await getSession();
+</script>
+
+<template>
+  <div v-if="session != null">
+    <h1>You are logged in!</h1>
+    <p>{{ session.email }}</p>
+  </div>
+  <div v-if="session == null">
+    <h1>You are not logged in!</h1>
+    <a href="/login">Login</a>
   </div>
 </template>
 `,
@@ -331,6 +341,16 @@ const session = await getSession();
     steps: [
       {
         name: "auth.ts",
+        title: "Server Configuration",
+        description: (
+          <div>
+            <div>
+              This file contains the authentication logic and configuration. The exports consts are <code>providers</code>, <code>handlers</code>,{" "}
+              <code>signIn</code>, <code>signOut</code>, <code>getSession</code>, and <code>getUser</code>.
+            </div>
+            <div>These constants are used throughout the application to manage authentication.</div>
+          </div>
+        ),
         codeDescription: "./src/lib/server/auth.ts",
         codeString: `import { Google } from "arctic";
 import { CreateLightAuth } from "@light-auth/sveltekit";
@@ -353,54 +373,120 @@ export const { providers, handlers, signIn, signOut, getSession, getUser } = Cre
       {
         name: "handlers.ts",
         codeDescription: "./src/routes/api/auth/[...lightauth]/+server.ts",
+        title: "Authentication Handlers",
+        description: (
+          <div>
+            This file contains the authentication handlers for the API. <br />
+            These handlers are responsible for processing authentication requests and returning the appropriate responses. <br />
+            The handlers are exported as <code>GET</code> and <code>POST</code> methods.
+            <Callout variant="error" className="my-2">
+              Due to a bug in SvelteKit, the redirect response is not handled correctly. <br />
+              Until this bug is fixed (<ExternalLink href="https://github.com/sveltejs/kit/issues/13816">#13816</ExternalLink>), we need to handle the redirect
+              manually.
+            </Callout>
+          </div>
+        ),
         codeString: `import { handlers } from '$lib/server/auth';
+import { redirect, type RequestEvent } from '@sveltejs/kit';
 
-export const { GET, POST } = handlers;`,
-        language: "ts",
-      },
-      {
-        name: "auth-client.ts",
-        codeDescription: "./src/lib/auth-client.ts",
-        codeString: `import { CreateLightAuthClient } from "@light-auth/sveltekit/client";
+const handlersSvelteKit = {
+	GET: async (event?: RequestEvent) => {
+		try {
+			return await handlers.GET(event);
+		} catch (error) {
+			const redirectError = error as { status: number; location: string };
+			if (redirectError && redirectError?.status === 302) redirect(redirectError.status, redirectError.location);
+		}
+	},
+	POST: async (event?: RequestEvent) => {
+		try {
+			return await handlers.POST(event);
+		} catch (error) {
+			const redirectError = error as { status: number; location: string };
+			if (redirectError && redirectError?.status === 302) redirect(redirectError.status, redirectError.location);
+		}
+	}
+};
 
-export const { signIn, signOut, getSession, getUser } = CreateLightAuthClient();`,
+export const { GET, POST } = handlersSvelteKit;
+`,
         language: "ts",
       },
       {
         name: "action.ts",
+        title: "Form Actions",
+        description: (
+          <div>
+            This file contains the form action for the login process. <br />
+            The login action is responsible for processing the login form submission and redirect the request to the appropriate provider. <br />
+            <Callout variant="error" className="my-2">
+              Due to a bug in SvelteKit, the redirect response is not handled correctly. <br />
+              Until this bug is fixed (<ExternalLink href="https://github.com/sveltejs/kit/issues/13816">#13816</ExternalLink>), we need to handle the redirect
+              manually.
+            </Callout>
+          </div>
+        ),
         codeDescription: "./src/+page.server.ts",
-        codeString: `import { signIn } from '$lib/server/auth';
+        codeString: `import { signIn, getSession } from '$lib/server/auth';
+import { redirect } from '@sveltejs/kit';
+import type { Actions } from './$types';
+
+export const load = async (event) => {
+	const session = await getSession(event);
+	return { session };
+};
 
 export const actions = {
 	default: async (event) => {
-		const data = await event.request.formData();
+		try {
+			const data = await event.request.formData();
 
-		const providerName = data.get('providerName');
-		const callbackUrl = data.get('callbackUrl');
-		if (typeof providerName !== 'string') throw new Error('Invalid provider');
-		if (typeof callbackUrl !== 'string') throw new Error('Invalid callback URL');
+			const providerName = data.get('providerName');
+			const callbackUrl = data.get('callbackUrl');
+			if (typeof providerName !== 'string') throw new Error('Invalid provider');
+			if (typeof callbackUrl !== 'string') throw new Error('Invalid callback URL');
 
-		await signIn(providerName, callbackUrl, event);
+			await signIn(providerName, callbackUrl, event);
+		} catch (error) {
+			const r = error as { status: number; location: string };
+			if (r?.status === 302) redirect(r.status, r.location);
+		}
 	}
-};`,
+} satisfies Actions;`,
         language: "ts",
       },
       {
         name: "page.svelte",
         codeDescription: "./src/+page.svelte",
+        title: "Login Page",
+        description: (
+          <div>
+            <div>This file contains the login page using a form action to login using your provider.</div>
+            <div>
+              You can also use client components to trigger the login process. <br />
+              See the documentation{" "}
+              <Link href="/docs/client-server-auth" className="text-blue-500 underline">
+                Client Components
+              </Link>{" "}
+              for more information.
+            </div>
+          </div>
+        ),
         codeString: `<script lang="ts">
-	import { signIn } from '$lib/auth-client';
-
-	const handleClick = () => signIn('google', '/profile');
+	let { data } = $props();
 </script>
 
-<form method="POST">
-	<input type="hidden" name="providerName" value="google" />
-	<input type="hidden" name="callbackUrl" value="/" />
-	<button type="submit">Sign in using POST action</button>
-</form>
-
-<button	on:click={handleClick} type="button">Sign in with from client-side</button>`,
+<div>
+{#if data.session}
+  <p>You are logged in as {data.session.email}</p>
+{:else}        
+  <form method="POST">
+    <input type="hidden" name="providerName" value="google" />
+    <input type="hidden" name="callbackUrl" value="/" />
+    <button type="submit">Sign in using POST action</button>
+  </form>
+{/if}  
+</div>`,
         language: "svelte",
       },
     ],
@@ -439,6 +525,16 @@ export const actions = {
       {
         name: "auth.ts",
         codeDescription: "./src/lib/auth.ts",
+        title: "Server Configuration",
+        description: (
+          <div>
+            <div>
+              This file contains the authentication logic and configuration. The exports consts are <code>providers</code>, <code>handlers</code>,{" "}
+              <code>signIn</code>, <code>signOut</code>, <code>getSession</code>, and <code>getUser</code>.
+            </div>
+            <div>These constants are used throughout the application to manage authentication.</div>
+          </div>
+        ),
         codeString: `import { Google } from "arctic";
 import { CreateLightAuth } from "@light-auth/astro";
 
@@ -456,22 +552,34 @@ export const { providers, handlers, getSession, getUser, signIn, signOut } = Cre
       },
       {
         name: "handlers.ts",
+        title: "Authentication Handlers",
+        description: (
+          <div>
+            This file contains the authentication handlers for the API. <br />
+            These handlers are responsible for processing authentication requests and returning the appropriate responses. <br />
+            The handlers are exported as <code>GET</code> and <code>POST</code> methods.
+          </div>
+        ),
         codeDescription: "./src/pages/api/auth/[...lightauth].ts",
         codeString: `import { handlers } from "@/lib/auth";
 export const { GET, POST } = handlers;`,
         language: "ts",
       },
       {
-        name: "auth-client.ts",
-        codeDescription: "./src/lib/auth-client.ts",
-        codeString: `import { CreateLightAuthClient } from "@light-auth/sveltekit/client";
-
-export const { signIn, signOut, getSession, getUser } = CreateLightAuthClient();`,
-        language: "ts",
-      },
-      {
         name: "action.ts",
         codeDescription: "./src/actions/index.ts",
+        title: "Form Actions",
+        description: (
+          <div>
+            This file contains the form action for the login process. <br />
+            The login action is responsible for processing the login form submission and send back the correct information. <br />
+            <Callout variant="error" className="my-2">
+              Due to a limitation from Astro, we can't redirect from the action code. <br />
+              More info in this issue (<ExternalLink href="https://github.com/withastro/astro/issues/11613">#11613</ExternalLink>). The redirect is handled in
+              the <code>index.astro</code> file, in the <strong>frontmatter</strong> section.
+            </Callout>
+          </div>
+        ),
         codeString: `import { defineAction } from "astro:actions";
 import { z } from "astro:schema";
 
@@ -489,6 +597,23 @@ export const server = {
       {
         name: "index.astro",
         codeDescription: "./src/pages/index.astro",
+        title: "Login Page",
+        description: (
+          <div>
+            <div>This file contains the login page using a form action to login using your provider.</div>
+            <div>
+              the <strong>frontmatter</strong> is also handle the signIn process, as it can't be done from the action itself.
+            </div>
+            <div>
+              You can also use client components to trigger the login process. <br />
+              See the documentation{" "}
+              <Link href="/docs/client-server-auth" className="text-blue-500 underline">
+                Client Components
+              </Link>{" "}
+              for more information.
+            </div>
+          </div>
+        ),
         codeString: `---
 import { getSession, getUser, signIn } from "@/lib/auth";
 import { actions } from "astro:actions";
@@ -523,15 +648,7 @@ if (result && !result.error && result.data) {
         )
       }
   </div>
-</Layout>
-
-<script>
-  import { signIn } from "@/lib/auth-client";
-  
-  const btnLogin = document.getElementById("btnLogin");
-  btnLogin.onclick = () => signIn("google", "/");
-</script>
-`,
+</Layout>`,
         language: "astro",
       },
     ],
@@ -570,6 +687,16 @@ if (result && !result.error && result.data) {
       {
         name: "auth.ts",
         codeDescription: "./src/lib/auth.ts",
+        title: "Server Configuration",
+        description: (
+          <div>
+            <div>
+              This file contains the authentication logic and configuration. The exports consts are <code>providers</code>, <code>handlers</code>,{" "}
+              <code>signIn</code>, <code>signOut</code>, <code>getSession</code>, and <code>getUser</code>.
+            </div>
+            <div>These constants are used throughout the application to manage authentication.</div>
+          </div>
+        ),
         codeString: `import { Google } from "arctic";
 import { CreateLightAuth } from "@light-auth/express";
 
@@ -587,17 +714,15 @@ export const { providers, handlers, middleware, signIn, signOut, getSession, get
         language: "ts",
       },
       {
-        name: "auth-client.ts",
-        codeDescription: "./src/lib/auth-client.ts",
-        codeString: `import { CreateLightAuthClient } from "@light-auth/express/client";
-
-export const { getSession, getUser, signIn, signOut } = CreateLightAuthClient({
-  basePath: "/api/auth",
-});`,
-        language: "ts",
-      },
-      {
         name: "app.ts",
+        title: "Authentication Handlers",
+        description: (
+          <div>
+            This file contains the authentication handlers and the login POST handler. <br />
+            These handlers are responsible for processing authentication requests and returning the appropriate responses. <br />
+            We have also a middleware to set the session in the response locals. <br />
+          </div>
+        ),
         codeDescription: "./src/app.ts",
         codeString: `import { getSession, getUser, handlers, middleware, signIn, signOut } from "../lib/auth";
 
@@ -625,36 +750,21 @@ app.post("/login", async (req: Request, res: Response) => {
         language: "ts",
       },
       {
-        name: "login.ts",
-        codeDescription: "./src/lib/login.ts",
-        codeString: `import { signIn } from "./auth-client";
-
-document.addEventListener("DOMContentLoaded", function () {
-  const btnLogin = document.getElementById("btnLogin");
-  btnLogin.addEventListener("click", function (event) {
-    event.preventDefault();
-    signIn("google", "/");
-  }
-});
-`,
-        language: "ts",
-      },
-      {
-        name: "login.pug",
-        codeDescription: "./view/login.pug",
+        name: "index.pug",
+        codeDescription: "./view/index.pug",
         codeString: `extends layout
 
 block content
     main
-      form(action="/login" method="POST")
-            input(type="hidden" name="providerName" value="google")
-            button(data-slot="button" type="submit")
-                Login using form action
-
-      button(data-slot="button" id="btnLogin" type="button")
-          Login using client Side                       
-
-    script(src='js/index.js' type="module")
+      if session
+        div
+          | Signed in as #{ ' ' }
+          strong= session.email || session.name
+      else    
+        form(action="/login" method="POST")
+              input(type="hidden" name="providerName" value="google")
+              button(data-slot="button" type="submit")
+                  Login using form action
 `,
         language: "pug",
       },
