@@ -7,6 +7,7 @@ import { CodeBlockClient } from "./code-block-client";
 import { LanguageCodeBlock } from "@/models/code-block-type";
 import { Step, Steps } from "./steps";
 import { Callout } from "./ui/callout";
+import Image from "next/image";
 
 export default function CodeExample({ languagesCodeBlocks }: { languagesCodeBlocks: LanguageCodeBlock[] }) {
   const [currentValue, setCurrentValue] = useState(languagesCodeBlocks[0]?.name ?? "");
@@ -16,14 +17,30 @@ export default function CodeExample({ languagesCodeBlocks }: { languagesCodeBloc
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mt-8">
           <p className="mt-4 text-lg ">
-            For now, you can use light-auth with <strong>Next.js, Astro, Nuxt, Sveltekit and Express</strong>. We are working on adding support for more
-            frameworks in the future.
+            For now, you can use light-auth with{" "}
+            <div className="inline-flex items-baseline gap-1 mr-2">
+              <Image src="/nextjs.svg" alt="Next.js Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" /> Next.js,
+            </div>
+            <div className="inline-flex items-baseline gap-1 mr-2">
+              <Image src="/astro.svg" alt="Astro Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" /> <code>Astro</code>,
+            </div>
+            <div className="inline-flex items-baseline gap-1 mr-2">
+              <Image src="/nuxtjs.svg" alt="Nuxt.js Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" /> <code>Nuxt</code>,
+            </div>
+            <div className="inline-flex items-baseline gap-1 mr-2">
+              <Image src="/sveltekit.svg" alt="SvelteKit Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" /> <code>SvelteKit</code> and
+            </div>
+            <div className="inline-flex items-baseline gap-1 mr-2">
+              <Image src="/express.svg" alt="Express Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" /> <code>Express</code>
+            </div>
+            . We are working on adding support for more frameworks in the future.
           </p>
           <Callout variant="info" className="mt-4">
-            The code examples show the two different ways to use <strong>light-auth</strong>: <strong>server-side</strong> logic and{" "}
-            <strong>client-side</strong> logic.
-            <br />
-            The server-side logic code is the default way to use light-auth, but you can also use the client-side logic to call the differents light-auth
+            The code examples shown here is using <strong>light-auth</strong> server side logic. You can also use the <strong>client side</strong> logic to call
+            the different
+            <div className="inline-flex items-baseline gap-1 mx-2 ">
+              <Image src="/light-auth.svg" alt="Light Auth Logo" width={12} height={12} className="p-0 m-0" /> <strong>Light Auth</strong>
+            </div>
             endpoints.
           </Callout>
           <Tabs className="w-full mt-4" onValueChange={setCurrentValue} value={currentValue}>
