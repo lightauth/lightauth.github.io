@@ -38,8 +38,18 @@ export const languagesCodeBlocks: LanguageCodeBlock[] = [
     },
     steps: [
       {
+        name: "show_me_the_code",
+        title: "TL; DR; Show me the code",
+        description: (
+          <p>
+            Okay, here is the hello world of Light-Auth with Next.js:{" "}
+            <ExternalLink href="https://github.com/lightauth/light-auth-nextjs-sample-one">light-auth-nextjs-sample-one</ExternalLink>
+          </p>
+        ),
+      },
+      {
         name: "auth.ts",
-        codeDescription: "./app/lib/auth.ts",
+        codeDescription: "./lib/auth.ts",
         title: "Server Configuration",
         description: (
           <div>
@@ -110,7 +120,6 @@ export const { GET, POST } = handlers;`,
           </div>
         ),
         codeString: `import { signIn } from "@/lib/auth";
-import { ClientLoginButton } from "@/components/client/client-login-button";
 
 export default function LoginPage() {
   return (
@@ -190,6 +199,16 @@ export default async function Home() {
       ],
     },
     steps: [
+      {
+        name: "show_me_the_code",
+        title: "TL; DR; Show me the code",
+        description: (
+          <p>
+            Okay, here is the hello world of Light-Auth with Nuxt:{" "}
+            <ExternalLink href="https://github.com/lightauth/light-auth-nuxt-sample-one">light-auth-nuxt-sample-one</ExternalLink>
+          </p>
+        ),
+      },
       {
         name: "auth.ts",
         codeDescription: "./server/auth.ts",
@@ -339,6 +358,16 @@ const session = await getSession();
       ],
     },
     steps: [
+      {
+        name: "show_me_the_code",
+        title: "TL; DR; Show me the code",
+        description: (
+          <p>
+            Okay, here is the hello world of Light-Auth with SvelteKit:{" "}
+            <ExternalLink href="https://github.com/lightauth/light-auth-sveltekit-sample-one">light-auth-sveltekit-sample-one</ExternalLink>
+          </p>
+        ),
+      },
       {
         name: "auth.ts",
         title: "Server Configuration",
@@ -523,6 +552,16 @@ export const actions = {
     },
     steps: [
       {
+        name: "show_me_the_code",
+        title: "TL; DR; Show me the code",
+        description: (
+          <p>
+            Okay, here is the hello world of Light-Auth with Astro:{" "}
+            <ExternalLink href="https://github.com/lightauth/light-auth-astro-sample-one">light-auth-astro-sample-one</ExternalLink>
+          </p>
+        ),
+      },
+      {
         name: "auth.ts",
         codeDescription: "./src/lib/auth.ts",
         title: "Server Configuration",
@@ -684,6 +723,16 @@ if (result && !result.error && result.data) {
       ],
     },
     steps: [
+      {
+        name: "show_me_the_code",
+        title: "TL; DR; Show me the code",
+        description: (
+          <p>
+            Okay, here is the hello world of Light-Auth with Express:{" "}
+            <ExternalLink href="https://github.com/lightauth/light-auth-express-sample-one">light-auth-express-sample-one</ExternalLink>
+          </p>
+        ),
+      },
       {
         name: "auth.ts",
         codeDescription: "./src/lib/auth.ts",
