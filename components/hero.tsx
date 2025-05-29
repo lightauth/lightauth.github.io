@@ -10,9 +10,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
           <div className="mb-8 flex justify-center">
-            <div className="rounded-full bg-blue-100 p-6">
-              <Image src="/light-auth.svg" alt="Light-Auth Logo" width={100} height={100} className="w-12 h-12 text-cyan-500" />
-            </div>
+            <Image src="/light-auth.svg" alt="Light-Auth Logo" width={100} height={100} className="w-12 h-12 sm:w-24 sm:h-24" />
           </div>
           <h1 className="flex flex-col items-center justify-center">
             <span className="block">Light-Auth</span>
