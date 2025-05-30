@@ -103,7 +103,7 @@ const googleProvider = {
   ),
 };
 
-export const { providers, handlers, signIn, signOut, getSession, getUser } = CreateLightAuth({providers: [googleProvider]});`}
+export const { providers, handlers, signIn, signOut, getAuthSession, getUser } = CreateLightAuth({providers: [googleProvider]});`}
               </CodeBlock>
 
               <h3 className="mb-2">Using Server Actions</h3>
@@ -197,7 +197,7 @@ export function ClientLoginActionButton({ children, providerName, callbackUrl }:
 
 import { CreateLightAuthClient } from "@light-auth/nextjs/client";
 
-export const { getSession, getUser, signIn, signOut } = CreateLightAuthClient();`}
+export const { getAuthSession, getUser, signIn, signOut } = CreateLightAuthClient();`}
               </CodeBlock>
 
               <h3 className="mb-2">Client-Side login component</h3>

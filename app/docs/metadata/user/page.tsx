@@ -178,7 +178,7 @@ export default function MetadataPage() {
           </Callout>
 
           <CodeBlock lang="tsx" title="./src/auth.ts" className="mb-4">
-            {`export const { providers, handlers, signIn, signOut, getSession, getUser } =
+            {`export const { providers, handlers, signIn, signOut, getAuthSession, getUser } =
   CreateLightAuth({
     providers: [googleProvider, microsoftProvider],
     userAdapter: createLightAuthUserAdapter({ base: "./users_db", isEncrypted: false })
@@ -190,11 +190,11 @@ export default function MetadataPage() {
             Like the session object, the user object is easily accessible using the <code>getUser()</code> method.
           </p>
           <CodeBlock lang="tsx" title="./src/app/home.tsx">
-            {`import { getSession, getUser } from "@/lib/auth";
+            {`import { getAuthSession, getUser } from "@/lib/auth";
 import { Avatar, AvatarImage } from "./ui/avatar";
 
 export default async function Home() {
-  const session = await getSession();
+  const session = await getAuthSession();
   const user = await getUser();
 
   return (
@@ -259,7 +259,7 @@ export type MyLightAuthUser = LightAuthUser<LightAuthSession> & {
           Add the custom properties values to the user object by using the <code>onUserSaving</code> function in the configuration:
         </p>
 
-        <CodeBlock lang="ts" title="src/app/auth.ts">{`export const { providers, handlers, signIn, signOut, getSession, getUser } =
+        <CodeBlock lang="ts" title="src/app/auth.ts">{`export const { providers, handlers, signIn, signOut, getAuthSession, getUser } =
   CreateLightAuth<LightAuthSession, MyLightAuthUser>({
     providers: [googleProvider, microsoftProvider],
 

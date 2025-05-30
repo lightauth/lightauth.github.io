@@ -223,7 +223,7 @@ export const {
   handlers,   // API route handlers
   signIn,     // Function to initiate sign-in
   signOut,    // Function to sign out
-  getSession, // Function to get the current session
+  getAuthSession, // Function to get the current session
   getUser     // Function to get the complete user data
 } = CreateLightAuth({
   providers: [googleProvider, microsoftProvider],

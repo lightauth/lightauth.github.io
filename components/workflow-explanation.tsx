@@ -75,8 +75,8 @@ export default function WorkflowExplanation() {
             <h3 className="font-medium text-slate-900 dark:text-white">Data Retrieval</h3>
             <p className="text-slate-600 dark:text-slate-400 mt-1">
               In your application, you can access the session data with{" "}
-              <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getSession()</code> for quick authentication checks, and the
-              complete user data with <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getUser()</code> when needed.
+              <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getAuthSession()</code> for quick authentication checks, and
+              the complete user data with <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getUser()</code> when needed.
             </p>
           </div>
         </li>

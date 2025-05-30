@@ -18,7 +18,7 @@ const renderFallbackDiagram = () => {
             <li>userId, sessionId, email, expirationDate</li>
             <li>Stored in cookie (~4KB limit)</li>
             <li>
-              Access via <code className="bg-white dark:bg-slate-800 px-1 rounded">getSession()</code>
+              Access via <code className="bg-white dark:bg-slate-800 px-1 rounded">getAuthSession()</code>
             </li>
           </ul>
         </div>

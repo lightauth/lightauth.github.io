@@ -130,7 +130,7 @@ export const {
   handlers,   
   signIn,     // <--------- signIn function
   signOut,    
-  getSession, 
+  getAuthSession, 
   getUser     
 } = CreateLightAuth({providers: [googleProvider]});`}
           </CodeBlock>
@@ -214,7 +214,7 @@ export const {providers, handlers} = CreateLightAuth({providers: [googleProvider
 
 import { CreateLightAuthClient } from "@light-auth/nextjs/client";
 
-export const { getSession, getUser, signIn, signOut } = CreateLightAuthClient();`}
+export const { getAuthSession, getUser, signIn, signOut } = CreateLightAuthClient();`}
           </CodeBlock>
           <h3 className="mb-2">Create a Login Button</h3>
 
@@ -336,7 +336,7 @@ export const {providers, handlers} = CreateLightAuth({providers: [googleProvider
 
 import { CreateLightAuthClient } from "@light-auth/nextjs/client";
 
-export const { getSession, getUser, signIn, signOut } = CreateLightAuthClient();`}
+export const { getAuthSession, getUser, signIn, signOut } = CreateLightAuthClient();`}
           </CodeBlock>
           <h3 className="mb-2">Create a Logout Button</h3>
 

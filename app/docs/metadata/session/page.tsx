@@ -24,7 +24,7 @@ export default function SessionPage() {
         </h2>
         <p>Light-Auth implements a secure, modern authentication flow based on JWT tokens.</p>
         <p>
-          This page explains what is the session token and the difference between the session object, retrieved with getSession() and the user object, retrieved
+          This page explains what is the session token and the difference between the session object, retrieved with getAuthSession() and the user object, retrieved
           with getUser().
         </p>
         <h2>
@@ -148,7 +148,7 @@ export default function SessionPage() {
           private data.
         </p>
         <p>
-          The session object is returned by the <code>getSession()</code> function. It contains the following fields:
+          The session object is returned by the <code>getAuthSession()</code> function. It contains the following fields:
         </p>
 
         <CodeBlock lang="json">
@@ -174,13 +174,13 @@ export default function SessionPage() {
       </div>
       <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-3">Get the Session object </h3>
       <p>
-        You can get the session object by using the <code>getSession()</code> function. This function is available in the <code>auth</code> module.
+        You can get the session object by using the <code>getAuthSession()</code> function. This function is available in the <code>auth</code> module.
       </p>
       <CodeBlock lang="tsx" title="src/app/home.tsx">
-        {`import { getSession } from "@/lib/auth";
+        {`import { getAuthSession } from "@/lib/auth";
 
 export default async function Home() {
-  const session = await getSession();
+  const session = await getAuthSession();
 
   return (
     <div>
@@ -206,7 +206,7 @@ export default async function Home() {
       </CodeBlock>
 
       <p>
-        From the client side you can get the client session object by using the <code>getSession()</code> function from the client sdk, using the{" "}
+        From the client side you can get the client session object by using the <code>getAuthSession()</code> function from the client sdk, using the{" "}
         <code>CreateLightAuthClient</code> function.
       </p>
       <p>Here is an example of how to get the session object from the client side, using a react hook:</p>
@@ -215,14 +215,14 @@ export default async function Home() {
 
 import { CreateLightAuthClient } from "@light-auth/nextjs/client";
 
-export const { getSession, getUser } = CreateLightAuthClient();
+export const { getAuthSession, getUser } = CreateLightAuthClient();
 
 export function useSession() {
     const [session, setSession] = useState<Session | null>(null);
 
     useEffect(() => {
         async function fetchSession() {
-          const session = await getSession();
+          const session = await getAuthSession();
           setSession(session);
         }
         fetchSession();
@@ -251,7 +251,7 @@ export function useSession() {
         </li>
         <li>The session object is stored in a secure cookie, while the user object is stored in a datastore.</li>
         <li>
-          The session object is returned by the <code>getSession()</code> function, while the user object is returned by the <code>getUser()</code> function.
+          The session object is returned by the <code>getAuthSession()</code> function, while the user object is returned by the <code>getUser()</code> function.
         </li>
       </ul>
       <p>
@@ -312,7 +312,7 @@ export type MyLightAuthUser = LightAuthUser<MyLightAuthSession> & {
         <code>onUserSaving</code> function in the configuration:
       </p>
 
-      <CodeBlock lang="ts" title="src/app/auth.ts">{`export const { providers, handlers, signIn, signOut, getSession, getUser } =
+      <CodeBlock lang="ts" title="src/app/auth.ts">{`export const { providers, handlers, signIn, signOut, getAuthSession, getUser } =
   CreateLightAuth<MyLightAuthSession, MyLightAuthUser>({
     providers: [googleProvider, microsoftProvider],
     onSessionSaving: async (session, tokens) => {
@@ -361,7 +361,7 @@ export type MyLightAuthUser = LightAuthUser<MyLightAuthSession> & {
       <p>You can change the default session store by modifying the configuration:</p>
 
       <CodeBlock lang="ts" title="src/app/auth.ts">
-        {`export const { providers, handlers, signIn, signOut, getSession, getUser } =
+        {`export const { providers, handlers, signIn, signOut, getAuthSession, getUser } =
   CreateLightAuth({
     providers: [googleProvider, microsoftProvider],
     sessionStore: redisSessionStore,
@@ -375,9 +375,9 @@ export type MyLightAuthUser = LightAuthUser<MyLightAuthSession> & {
 
       <CodeBlock lang="ts" title="src/app/auth.ts">
         {`export interface LightAuthSessionStore {
-  getSession: (args: { config: LightAuthConfig; [key: string]: unknown }) => Promise<LightAuthSession | null>;
-  setSession: (args: { config: LightAuthConfig; session: LightAuthSession; [key: string]: unknown }) => Promise<BaseResponse>;
-  deleteSession: (args: { config: LightAuthConfig; [key: string]: unknown }) => Promise<BaseResponse>;
+  getAuthSession: (args: { config: LightAuthConfig; [key: string]: unknown }) => Promise<LightAuthSession | null>;
+  setAuthSession: (args: { config: LightAuthConfig; session: LightAuthSession; [key: string]: unknown }) => Promise<BaseResponse>;
+  deleteAuthSession: (args: { config: LightAuthConfig; [key: string]: unknown }) => Promise<BaseResponse>;
   generateSessionId: () => string;
 }`}
       </CodeBlock>

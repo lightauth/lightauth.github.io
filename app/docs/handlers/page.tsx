@@ -84,7 +84,7 @@ export const {
   handlers,   // <--------- API route handlers
   signIn,     
   signOut,    
-  getSession, 
+  getAuthSession, 
   getUser     
 } = CreateLightAuth({providers: [googleProvider]});`}
         </CodeBlock>
@@ -185,7 +185,7 @@ export const {GET, POST} : {GET: APIRoute, POST: APIRoute} = handlers;
                 <p className="mb-4">Once created, add the code to intercept requests:</p>
 
                 <CodeBlock lang="ts" title="/src/app.ts" className="mb-4">
-                  {`import { getSession, getUser, handlers, middleware, signIn, signOut } from "./auth";
+                  {`import { getAuthSession, getUser, handlers, middleware, signIn, signOut } from "./auth";
 
 // handlers for everything related to light-auth
 app.use("/api/auth/", handlers);

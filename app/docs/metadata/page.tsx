@@ -27,7 +27,7 @@ export default function MetadataPage() {
           <strong>Light-Auth</strong> implements a secure, modern authentication flow based on <strong>JWT tokens</strong>.
         </p>
         <p className="mb-4">
-          This page explains what is the session token and the difference between the session object, retrieved with <code>getSession()</code> and the user
+          This page explains what is the session token and the difference between the session object, retrieved with <code>getAuthSession()</code> and the user
           object, retrieved with <code>getUser()</code>.
         </p>
         <section className="mb-12">
@@ -87,7 +87,7 @@ export default function MetadataPage() {
 
             <p className="text-slate-700 dark:text-slate-300">
               This separation creates a clean, efficient authentication system where developers can quickly verify a user's identity with{" "}
-              <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getSession()</code> for common authentication needs, while
+              <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getAuthSession()</code> for common authentication needs, while
               accessing complete user data with <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getUser()</code> only when
               necessary.
             </p>
@@ -154,7 +154,7 @@ export default function MetadataPage() {
                 <TableRow>
                   <TableCell className="font-medium">Retrieval Method</TableCell>
                   <TableCell>
-                    <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getSession()</code>
+                    <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getAuthSession()</code>
                   </TableCell>
                   <TableCell>
                     <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getUser()</code>
@@ -219,7 +219,7 @@ export default function MetadataPage() {
                     </p>
                     <p className="text-slate-700 dark:text-slate-300">
                       To access the session data in your application, use the{" "}
-                      <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getSession()</code> method provided by Light-Auth.
+                      <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm">await getAuthSession()</code> method provided by Light-Auth.
                     </p>
                   </CardContent>
                 </Card>

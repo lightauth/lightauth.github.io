@@ -55,7 +55,7 @@ export const languagesCodeBlocks: LanguageCodeBlock[] = [
           <div>
             <div>
               This file contains the authentication logic and configuration. The exports consts are <code>providers</code>, <code>handlers</code>,{" "}
-              <code>signIn</code>, <code>signOut</code>, <code>getSession</code>, and <code>getUser</code>.
+              <code>signIn</code>, <code>signOut</code>, <code>getAuthSession</code>, and <code>getUser</code>.
             </div>
             <div>These constants are used throughout the application to manage authentication.</div>
           </div>
@@ -66,8 +66,8 @@ import { CreateLightAuth } from "@light-auth/nextjs";
 const googleProvider = {
   providerName: "google",
   arctic: new Google(
-    process.env.GOOGLE_CLIENT_ID,
-    process.env.GOOGLE_CLIENT_SECRET,
+    process.env.GOOGLE_CLIENT_ID!,
+    process.env.GOOGLE_CLIENT_SECRET!,
     "http://localhost:3000/api/auth/callback/google"
   ),
 };
@@ -76,13 +76,13 @@ const googleProvider = {
 const githubProvider = {
   providerName: "github",
   arctic: new GitHub(
-    process.env.GITHUB_CLIENT_ID,
-    process.env.GITHUB_CLIENT_SECRET,
+    process.env.GITHUB_CLIENT_ID!,
+    process.env.GITHUB_CLIENT_SECRET!,
     "http://localhost:3000/api/auth/callback/github"
   ),
 };
 
-export const { providers, handlers, signIn, signOut, getSession, getUser } = CreateLightAuth({
+export const { providers, handlers, signIn, signOut, getAuthSession, getUser } = CreateLightAuth({
   providers: [googleProvider, githubProvider]
 });`,
         language: "ts",
@@ -142,10 +142,10 @@ export default function LoginPage() {
         codeDescription: "./app/profile.tsx",
         title: "Profile Page",
         description: <div>Retrieves the session information to check if user is authenticated or not and displays it.</div>,
-        codeString: `import { getSession } from "@/lib/auth";
+        codeString: `import { getAuthSession } from "@/lib/auth";
 
 export default async function Home() {
-  const session = await getSession();
+  const session = await getAuthSession();
 
   return (
     <div>
@@ -210,14 +210,37 @@ export default async function Home() {
         ),
       },
       {
+        name: "config",
+        title: "Nuxt specific configuration",
+        description: (
+          <div>
+            <Callout variant="warning" className="my-4">
+              We are using internally a lot of the functions from <code>#imports</code>, so we need to transpile correctly the package.
+              <br />
+              This step is mandatory to make the package works correctly with Nuxt.
+            </Callout>
+            <p>
+              Add <code>@light-auth/nuxt</code> to the build step to transpile it with Babel:
+            </p>
+          </div>
+        ),
+        codeDescription: "./nuxt.config.ts",
+        codeString: `export default defineNuxtConfig({
+  ....,
+  build: {
+    transpile: ["@light-auth/nuxt"]
+  }
+})`,
+      },
+      {
         name: "auth.ts",
-        codeDescription: "./server/auth.ts",
+        codeDescription: "./server/utils/auth.ts",
         title: "Server Configuration",
         description: (
           <div>
             <div>
               This file contains the authentication logic and configuration. The exports consts are <code>providers</code>, <code>handlers</code>,{" "}
-              <code>signIn</code>, <code>signOut</code>, <code>getSession</code>, and <code>getUser</code>.
+              <code>signIn</code>, <code>signOut</code>, <code>getAuthSession</code>, and <code>getUser</code>.
             </div>
             <div>These constants are used throughout the application to manage authentication.</div>
           </div>
@@ -228,13 +251,13 @@ import { CreateLightAuth } from "@light-auth/nuxt";
 const googleProvider = {
   providerName: "google",
   arctic: new Google(
-    process.env.GOOGLE_CLIENT_ID,
-    process.env.GOOGLE_CLIENT_SECRET,
+    process.env.GOOGLE_CLIENT_ID!,
+    process.env.GOOGLE_CLIENT_SECRET!,
     "http://localhost:3000/api/auth/callback/google"
   ),
 };
 
-export const { providers, handlers, signIn, signOut, getSession, getUser } = CreateLightAuth({providers: [googleProvider]});`,
+export const { providers, handlers, signIn, signOut, getAuthSession, getUser } = CreateLightAuth({providers: [googleProvider]});`,
         language: "ts",
       },
       {
@@ -267,6 +290,7 @@ export default defineEventHandler(handlers);`,
 
 export default defineEventHandler(async (event) => {
   const querieObjects = getQuery(event);
+
   await signIn(querieObjects.providerName, querieObjects.callbackUrl, event);
 });`,
         language: "ts",
@@ -308,16 +332,16 @@ export default defineEventHandler(async (event) => {
         description: <div>Retrieves the session information to check if user is authenticated or not and displays it.</div>,
         codeString: `<script setup lang="ts">
 import { CreateLightAuthClient } from "@light-auth/nuxt/client";
-const { getSession } = CreateLightAuthClient();
-const session = await getSession();
+const { useSession } = CreateLightAuthClient();
+const { data: session, refresh, status, pending, error } = useSession();
 </script>
 
 <template>
-  <div v-if="session != null">
+  <div v-if="session">
     <h1>You are logged in!</h1>
     <p>{{ session.email }}</p>
   </div>
-  <div v-if="session == null">
+  <div v-if="!session">
     <h1>You are not logged in!</h1>
     <a href="/login">Login</a>
   </div>
@@ -371,16 +395,16 @@ const session = await getSession();
       {
         name: "auth.ts",
         title: "Server Configuration",
+        codeDescription: "./src/lib/server/auth.ts",
         description: (
           <div>
             <div>
               This file contains the authentication logic and configuration. The exports consts are <code>providers</code>, <code>handlers</code>,{" "}
-              <code>signIn</code>, <code>signOut</code>, <code>getSession</code>, and <code>getUser</code>.
+              <code>signIn</code>, <code>signOut</code>, <code>getAuthSession</code>, and <code>getUser</code>.
             </div>
             <div>These constants are used throughout the application to manage authentication.</div>
           </div>
         ),
-        codeDescription: "./src/lib/server/auth.ts",
         codeString: `import { Google } from "arctic";
 import { CreateLightAuth } from "@light-auth/sveltekit";
 import { env } from '$env/dynamic/private';
@@ -388,12 +412,12 @@ import { env } from '$env/dynamic/private';
 
 const googleProvider = {
   providerName: "google",
-  arctic: new Google(env.GOOGLE_CLIENT_ID, env.GOOGLE_CLIENT_SECRET,
-    "http://localhost:3000/api/auth/callback/google"
+  arctic: new Google(env.GOOGLE_CLIENT_ID!, env.GOOGLE_CLIENT_SECRET!,
+    "http://localhost:5173/api/auth/callback/google"
   ),
 };
 
-export const { providers, handlers, signIn, signOut, getSession, getUser } = CreateLightAuth({
+export const { providers, handlers, signIn, signOut, getAuthSession, getUser } = CreateLightAuth({
   providers: [googleProvider],
   env: env
 });`,
@@ -456,12 +480,12 @@ export const { GET, POST } = handlersSvelteKit;
           </div>
         ),
         codeDescription: "./src/+page.server.ts",
-        codeString: `import { signIn, getSession } from '$lib/server/auth';
+        codeString: `import { signIn, getAuthSession } from '$lib/server/auth';
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const load = async (event) => {
-	const session = await getSession(event);
+	const session = await getAuthSession(event);
 	return { session };
 };
 
@@ -569,7 +593,7 @@ export const actions = {
           <div>
             <div>
               This file contains the authentication logic and configuration. The exports consts are <code>providers</code>, <code>handlers</code>,{" "}
-              <code>signIn</code>, <code>signOut</code>, <code>getSession</code>, and <code>getUser</code>.
+              <code>signIn</code>, <code>signOut</code>, <code>getAuthSession</code>, and <code>getUser</code>.
             </div>
             <div>These constants are used throughout the application to manage authentication.</div>
           </div>
@@ -580,12 +604,12 @@ import { CreateLightAuth } from "@light-auth/astro";
 const googleProvider {
   providerName: "google",
   arctic: new Google(
-    import.meta.env.GOOGLE_CLIENT_ID, 
-    import.meta.env.GOOGLE_CLIENT_SECRET, 
+    import.meta.env.GOOGLE_CLIENT_ID!, 
+    import.meta.env.GOOGLE_CLIENT_SECRET!, 
     "http://localhost:4321/api/auth/callback/google")
 };
 
-export const { providers, handlers, getSession, getUser, signIn, signOut } = CreateLightAuth({providers: [googleProvider]});
+export const { providers, handlers, getAuthSession, getUser, signIn, signOut } = CreateLightAuth({providers: [googleProvider]});
 `,
         language: "ts",
       },
@@ -654,12 +678,12 @@ export const server = {
           </div>
         ),
         codeString: `---
-import { getSession, getUser, signIn } from "@/lib/auth";
+import { getAuthSession, getUser, signIn } from "@/lib/auth";
 import { actions } from "astro:actions";
 
 export const prerender = false;
 
-const session = await getSession(Astro);
+const session = await getAuthSession(Astro);
 const user = await getUser(Astro);
 
 const result = Astro.getActionResult(actions.login);
@@ -741,7 +765,7 @@ if (result && !result.error && result.data) {
           <div>
             <div>
               This file contains the authentication logic and configuration. The exports consts are <code>providers</code>, <code>handlers</code>,{" "}
-              <code>signIn</code>, <code>signOut</code>, <code>getSession</code>, and <code>getUser</code>.
+              <code>signIn</code>, <code>signOut</code>, <code>getAuthSession</code>, and <code>getUser</code>.
             </div>
             <div>These constants are used throughout the application to manage authentication.</div>
           </div>
@@ -758,7 +782,7 @@ const googleProvider = {
   ),
 };
 
-export const { providers, handlers, middleware, signIn, signOut, getSession, getUser } 
+export const { providers, handlers, middleware, signIn, signOut, getAuthSession, getUser } 
   = CreateLightAuth({ providers: [googleProvider]});`,
         language: "ts",
       },
@@ -773,7 +797,7 @@ export const { providers, handlers, middleware, signIn, signOut, getSession, get
           </div>
         ),
         codeDescription: "./src/app.ts",
-        codeString: `import { getSession, getUser, handlers, middleware, signIn, signOut } from "../lib/auth";
+        codeString: `import { getAuthSession, getUser, handlers, middleware, signIn, signOut } from "../lib/auth";
 
 export const app = express();
 
