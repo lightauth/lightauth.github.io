@@ -24,6 +24,7 @@ import {
   LucideRotateCcw,
   Twitter,
   Github,
+  ShieldEllipsis,
 } from "lucide-react";
 
 import {
@@ -165,6 +166,16 @@ export function DocsSidebar({ className }: DocsSidebarProps) {
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
                 ) : null}
+              </SidebarMenuItem>
+
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/docs/ratelimit" || pathname.startsWith("/docs/ratelimit/")}>
+                  <Link href="/docs/ratelimit">
+                    <ShieldEllipsis className="h-4 w-4" />
+                    <span>Rate Limit</span>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
 
               <SidebarMenuItem>
