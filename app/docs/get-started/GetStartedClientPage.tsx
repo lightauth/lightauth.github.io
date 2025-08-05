@@ -16,6 +16,7 @@ export default function GetStartedClientPage({ languagesCodeBlocks }: { language
       <p className="text-lg text-muted-foreground">Learn how to quickly integrate Light-Auth into your application.</p>
 
       <div className="mt-8">
+        
         <Steps>
           <Step index={0} title="Prerequisites" description="What you need before getting started">
             <div>

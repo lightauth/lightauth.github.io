@@ -263,6 +263,15 @@ export default function DocsPage() {
                       <p className="text-sm text-slate-600 dark:text-slate-400">Node.js web application framework</p>
                     </div>
                   </li>
+                  <li className="flex items-start">
+                    <div className="relative w-8 h-8 rounded-full bg-gray-200 dark:bg-white flex items-center justify-center mr-3 flex-shrink-0">
+                      <Image src={"/tanstack.svg"} className="absolute top-[6px] " alt="TanStack" width={20} height={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white">TanStack React Start</h4>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">TanStack React Start SSR framework support</p>
+                    </div>
+                  </li>
                 </ul>
               </CardContent>
             </Card>

@@ -28,10 +28,14 @@ export default function CodeExample({ languagesCodeBlocks }: { languagesCodeBloc
               <Image src="/nuxtjs.svg" alt="Nuxt.js Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" /> <code>Nuxt</code>,
             </div>
             <div className="inline-flex items-baseline gap-1 mr-2">
-              <Image src="/sveltekit.svg" alt="SvelteKit Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" /> <code>SvelteKit</code> and
+              <Image src="/sveltekit.svg" alt="SvelteKit Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" /> <code>SvelteKit</code>,
             </div>
             <div className="inline-flex items-baseline gap-1 mr-2">
-              <Image src="/express.svg" alt="Express Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" /> <code>Express</code>
+              <Image src="/express.svg" alt="Express Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" /> <code>Express</code>  and 
+            </div>
+            <div className="inline-flex items-baseline gap-1 mr-2">
+              <Image src="/tanstack.svg" alt="Tanstack Logo" width={12} height={12} 
+              className="w-5 h-5 p-0 m-0" /> <code>Tanstack Start</code>
             </div>
             . We are working on adding support for more frameworks in the future.
           </p>

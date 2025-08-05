@@ -101,6 +101,19 @@ export default function SsrRequirementsPage() {
                 </div>
               </CardContent>
             </Card>
+            <Card>
+              <CardContent className="flex items-center mt-2">
+                <div className="relative w-12 h-12 rounded-full bg-gray-200 dark:bg-white flex items-center justify-center mr-3 flex-shrink-0">
+                  <Image src={"/tanstack.svg"} className="absolute top-[6px] " alt="TanStack" width={30} height={30} />
+                </div>
+                <div>
+                  <div className="flex items-baseline">
+                    <h3>TanStack</h3>
+                  </div>
+                  <p className="text-sm">Tanstack React Start framework</p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           <h3 className="mt-6 mb-3">Why SSR is recommend ?</h3>

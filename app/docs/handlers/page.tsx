@@ -118,9 +118,9 @@ export const {
               <Image src="/sveltekit.svg" alt="SvelteKit Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />
               SvelteKit
             </TabsTrigger>
-            <TabsTrigger value="qwik" className="gap-2">
-              <Image src="/qwik.svg" alt="Qwik Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />
-              Qwik
+            <TabsTrigger value="tanstack" className="gap-2">
+              <Image src="/tanstack.svg" alt="Tanstack Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />
+              Tanstack
             </TabsTrigger>
           </TabsList>
 
@@ -161,7 +161,7 @@ export const { GET, POST } = handlers;`}
                 </p>
                 <p className="mb-4">Once created, add the code to intercept requests:</p>
 
-                <CodeBlock lang="ts" title="/pages/api/auth/[...lightauth]/route.ts" className="mb-4">
+                <CodeBlock lang="ts" title="/pages/api/auth/[...lightauth].ts" className="mb-4">
                   {`import type { APIRoute } from "astro";
 import { handlers } from "@/lib/auth";
 
@@ -210,23 +210,8 @@ app.use("/api/auth/", handlers);
                 </p>
                 <p className="mb-4">Once created, add the code to intercept requests:</p>
 
-                <CodeBlock lang="ts" title="/pages/api/auth/[...lightauth]/route.ts" className="mb-4">
-                  {`import { handlers } from "~/lib/auth";
-
-export default defineEventHandler(async (event) => {
-  const method = event.node.req.method;
-  
-  if (method === "GET") {
-    return await handlers.GET(event.node.req, event.node.res);
-  } else if (method === "POST") {
-    return await handlers.POST(event.node.req, event.node.res);
-  }
-  
-  return createError({
-    statusCode: 405,
-    statusMessage: "Method not allowed"
-  });
-});`}
+                <CodeBlock lang="ts" title="/server/api/auth/[...lightauth].ts" className="mb-4">
+                  {`export default defineEventHandler(handlers);`}
                 </CodeBlock>
               </CardContent>
             </Card>
@@ -255,6 +240,26 @@ export const POST: RequestHandler = async ({ request }) => {
               </CardContent>
             </Card>
           </TabsContent>
+
+          <TabsContent value="tanstack">
+            <Card>
+              <CardContent className="mt-4">
+                <p>
+                  By default, <strong>Light-Auth</strong> expects the API handlers to be exposed at <code>/routes/api/auth/$.tsx</code>.
+                </p>
+                <p className="mb-4">Once created, add the code to intercept requests:</p>
+
+                <CodeBlock lang="ts" title="/routes/api/auth/$.tsx" className="mb-4">
+                  {`import { createServerFileRoute } from '@tanstack/react-start/server';
+import { handlers } from "@/lib/auth";
+
+export const ServerRoute = createServerFileRoute('/api/auth/$').methods(handlers)`}
+                </CodeBlock>
+
+              </CardContent>
+            </Card>
+          </TabsContent>
+
         </Tabs>
 
         <div>

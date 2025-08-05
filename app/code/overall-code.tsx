@@ -17,21 +17,21 @@ export const languagesCodeBlocks: LanguageCodeBlock[] = [
           image: <Image src="/npmjs.svg" alt="NPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "npm",
           title: "NPM",
-          codeString: "npm install light-auth-nextjs",
+          codeString: "npm install @light-auth/nextjs",
           language: "sh",
         },
         {
           image: <Image src="/yarn.svg" alt="Yarn Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "yarn",
           title: "Yarn",
-          codeString: "yarn add light-auth-nextjs",
+          codeString: "yarn add @light-auth/nextjs",
           language: "sh",
         },
         {
           image: <Image src="/pnpm.svg" alt="PNPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "pnpm",
           title: "PNPM",
-          codeString: "pnpm add light-auth-nextjs",
+          codeString: "pnpm add @light-auth/nextjs",
           language: "sh",
         },
       ],
@@ -179,21 +179,21 @@ export default async function Home() {
           image: <Image src="/npmjs.svg" alt="NPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "npm",
           title: "NPM",
-          codeString: "npm install light-auth-nuxt",
+          codeString: "npm install @light-auth/nuxt",
           language: "sh",
         },
         {
           image: <Image src="/yarn.svg" alt="Yarn Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "yarn",
           title: "Yarn",
-          codeString: "yarn add light-auth-nuxt",
+          codeString: "yarn add @light-auth/nuxt",
           language: "sh",
         },
         {
           image: <Image src="/pnpm.svg" alt="PNPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "pnpm",
           title: "PNPM",
-          codeString: "pnpm add light-auth-nuxt",
+          codeString: "pnpm add @light-auth/nuxt",
           language: "sh",
         },
       ],
@@ -362,21 +362,21 @@ const { data: session, refresh, status, pending, error } = useSession();
           image: <Image src="/npmjs.svg" alt="NPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "npm",
           title: "NPM",
-          codeString: "npm install light-auth-sveltekit",
+          codeString: "npm install @light-auth/sveltekit",
           language: "sh",
         },
         {
           image: <Image src="/yarn.svg" alt="Yarn Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "yarn",
           title: "Yarn",
-          codeString: "yarn add light-auth-sveltekit",
+          codeString: "yarn add @light-auth/sveltekit",
           language: "sh",
         },
         {
           image: <Image src="/pnpm.svg" alt="PNPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "pnpm",
           title: "PNPM",
-          codeString: "pnpm add light-auth-sveltekit",
+          codeString: "pnpm add @light-auth/sveltekit",
           language: "sh",
         },
       ],
@@ -555,21 +555,21 @@ export const actions = {
           image: <Image src="/npmjs.svg" alt="NPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "npm",
           title: "NPM",
-          codeString: "npm install light-auth-astro",
+          codeString: "npm install @light-auth/astro",
           language: "sh",
         },
         {
           image: <Image src="/yarn.svg" alt="Yarn Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "yarn",
           title: "Yarn",
-          codeString: "yarn add light-auth-astro",
+          codeString: "yarn add @light-auth/astro",
           language: "sh",
         },
         {
           image: <Image src="/pnpm.svg" alt="PNPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "pnpm",
           title: "PNPM",
-          codeString: "pnpm add light-auth-astro",
+          codeString: "pnpm add @light-auth/astro",
           language: "sh",
         },
       ],
@@ -727,21 +727,21 @@ if (result && !result.error && result.data) {
           image: <Image src="/npmjs.svg" alt="NPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "npm",
           title: "NPM",
-          codeString: "npm install light-auth-express",
+          codeString: "npm install @light-auth/express",
           language: "sh",
         },
         {
           image: <Image src="/yarn.svg" alt="Yarn Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "yarn",
           title: "Yarn",
-          codeString: "yarn add light-auth-express",
+          codeString: "yarn add @light-auth/express",
           language: "sh",
         },
         {
           image: <Image src="/pnpm.svg" alt="PNPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
           name: "pnpm",
           title: "PNPM",
-          codeString: "pnpm add light-auth-express",
+          codeString: "pnpm add @light-auth/express",
           language: "sh",
         },
       ],
@@ -843,6 +843,191 @@ block content
       },
     ],
   },
+  {
+    image: <Image src="/tanstack.svg" alt="Tanstack Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
+    name: "tanstack",
+    title: "Tanstack React Start",
+    installationTabs: {
+      defaultValue: "npm",
+      tabs: [
+        {
+          image: <Image src="/npmjs.svg" alt="NPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
+          name: "npm",
+          title: "NPM",
+          codeString: "npm install @light-auth/tanstack",
+          language: "sh",
+        },
+        {
+          image: <Image src="/yarn.svg" alt="Yarn Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
+          name: "yarn",
+          title: "Yarn",
+          codeString: "yarn add @light-auth/tanstack",
+          language: "sh",
+        },
+        {
+          image: <Image src="/pnpm.svg" alt="PNPM Logo" width={12} height={12} className="w-5 h-5 p-0 m-0" />,
+          name: "pnpm",
+          title: "PNPM",
+          codeString: "pnpm add @light-auth/tanstack",
+          language: "sh",
+        },
+      ],
+    },
+    steps: [
+      {
+        name: "show_me_the_code",
+        title: "TL; DR; Show me the code",
+        description: (
+          <p>
+            Okay, here is the hello world of Light-Auth with Tanstack start:{" "}
+            <ExternalLink href="https://github.com/lightauth/light-auth-tanstack-sample-one">light-auth-tanstack-react-start-sample-one</ExternalLink>
+          </p>
+        ),
+      },
+      {
+        name: "auth.ts",
+        codeDescription: "./lib/auth.ts",
+        title: "Server Configuration",
+        description: (
+          <div>
+            <div>
+              This file contains the authentication logic and configuration. The exports consts are <code>providers</code>, <code>handlers</code>,{" "}
+              <code>signIn</code>, <code>signOut</code>, <code>getAuthSession</code>, and <code>getUser</code>.
+            </div>
+            <div>These constants are used throughout the application to manage authentication.</div>
+          </div>
+        ),
+        codeString: `import { Google, Github } from "arctic";
+import { CreateLightAuth } from "@light-auth/nextjs";
+
+const googleProvider = {
+  providerName: "google",
+  arctic: new Google(
+    process.env.GOOGLE_CLIENT_ID!,
+    process.env.GOOGLE_CLIENT_SECRET!,
+    "http://localhost:3000/api/auth/callback/google"
+  ),
+};
+
+
+const githubProvider = {
+  providerName: "github",
+  arctic: new GitHub(
+    process.env.GITHUB_CLIENT_ID!,
+    process.env.GITHUB_CLIENT_SECRET!,
+    "http://localhost:3000/api/auth/callback/github"
+  ),
+};
+
+export const { providers, handlers, signIn, signOut, getAuthSession, getUser } = CreateLightAuth({
+  providers: [googleProvider, githubProvider]
+});`,
+        language: "ts",
+      },
+      {
+        name: "$.tsx",
+        title: "Authentication Handlers",
+        description: (
+          <div>
+            This file contains the authentication handlers for the API. <br />
+            These handlers are responsible for processing authentication requests and returning the appropriate responses. <br />
+            The handlers are exported as <code>GET</code> and <code>POST</code> methods.
+          </div>
+        ),
+        codeDescription: "./routes/api/auth/$.tsx",
+        codeString: `import { createServerFileRoute } from '@tanstack/react-start/server';
+import { handlers } from "@/lib/auth";
+export const ServerRoute = createServerFileRoute('/api/auth/$').methods(handlers)`,
+        language: "ts",
+      },
+      {
+        name: "login.tsx",
+        codeDescription: "./routes/login.tsx",
+        title: "Login Page",
+        description: (
+          <div>
+            <div>This file contains the login page using a form action to login using your provider.</div>
+            <div>
+              You can also use client components to trigger the login process. <br />
+              See the documentation{" "}
+              <Link href="/docs/client-server-auth" className="text-blue-500 underline">
+                Client Components
+              </Link>{" "}
+              for more information.
+            </div>
+          </div>
+        ),
+        codeString: `import { createFileRoute } from '@tanstack/react-router'
+import { createServerFn } from '@tanstack/react-start';
+import { signIn } from '@/lib/auth';
+
+export const Route = createFileRoute('/login')({
+  component: RouteComponent,
+})
+
+export const actionSignIn = createServerFn().handler(() => signIn("google", "/profile"));
+
+
+function RouteComponent() {
+  return (
+    <div>
+      <form action={actionSignIn.url} method="POST">
+        <button type="submit">login using a form action</button>
+      </form>
+    </div>
+  );
+}`,
+        language: "tsx",
+      },
+      {
+        name: "profile.tsx",
+        codeDescription: "./routes/profile.tsx",
+        title: "Profile Page",
+        description: <div>Retrieves the session information to check if user is authenticated or not and displays it.</div>,
+        codeString: `import { createFileRoute, Link } from '@tanstack/react-router'
+import { createServerFn } from '@tanstack/react-start';
+import { getAuthSession as laGetAuthSession } from "@/lib/auth";
+
+const getAuthSession = createServerFn({
+  method: 'GET',
+}).handler(() => {
+  return laGetAuthSession()
+})
+
+export const Route = createFileRoute('/profile')({
+  component: RouteComponent,
+  loader: async () => {
+    const session = await getAuthSession();
+    return { session };
+  },
+})
+
+function RouteComponent() {
+  const state = Route.useLoaderData()
+  const session = state.session;
+  
+  return (
+    <div>
+      {session != null ? (
+        <div>
+          <p>✅ You are logged in!</p>
+          <div>Session Email: {session.email}</div>
+          <div>Session Provider: {session.providerName}</div>
+        </div>
+      ) : (
+        <div>
+          <p>⚠️ You are not logged in</p>
+          <a href="/login"> Go to Login Page </a>
+        </div>
+      )}
+    </div>
+  );
+}`,
+        language: "tsx",
+      },
+    ],
+  },
+
 ];
 
 export const getLanguagesCodeBlocks = async () => {
