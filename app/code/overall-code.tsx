@@ -885,6 +885,31 @@ block content
         ),
       },
       {
+        name: "config",
+        title: "Tanstack Start specific configuration",
+        description: (
+          <div>
+            <Callout variant="warning" className="my-4">
+              This step is mandatory to make the package works correctly with Tanstack React Start.
+              <br />
+              The issue is tracked here :
+              <ExternalLink href="https://github.com/TanStack/router/issues/4409">Start: SSR context loss due to dependency externalization</ExternalLink>
+            </Callout>
+            <p>
+              Add <code>@light-auth/tanstack-react-start</code> to the vite config as `noExternal` to avoid the SSR context loss:
+            </p>
+          </div>
+        ),
+        codeDescription: "./nuxt.config.ts",
+        codeString: `export default defineConfig({
+  ...., 
+  ....,      
+  ssr: {
+    noExternal: ['@light-auth/tanstack-react-start'],
+  },
+})`,
+      },
+      {
         name: "auth.ts",
         codeDescription: "./lib/auth.ts",
         title: "Server Configuration",
